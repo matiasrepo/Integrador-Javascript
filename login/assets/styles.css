@@ -1,3 +1,4 @@
+/* Variables CSS personalizadas */
 :root {
     --bg-aboutUs-color: #7ab573;
     --font-aboutUsSpan-color: #a83789;
@@ -17,12 +18,13 @@
     --font-navbarSpan-color: #79E06C;
 }
 
+/* Importar fuentes desde Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Sen&display=swap');
-/* para importar: font-family: 'Sen', sans-serif; */
 
+/* Estilos globales */
 * {
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     list-style: none;
     box-sizing: border-box;
     text-decoration: none;
@@ -33,6 +35,7 @@ body {
     background-color: #252525;
 }
 
+/* Encabezado (Navbar) */
 header {
     background-color: var(--bg-navbar-color);
     max-width: 100%;
@@ -42,6 +45,7 @@ header {
     width: 100%;
 }
 
+/* Contenido principal */
 main {
     max-width: 100%;
     margin-top: 80px;
@@ -50,15 +54,13 @@ main {
     padding-top: 20px;
 }
 
+/* Pie de página */
 footer {
     background-color: #252525;
     max-width: 100%;
-
 }
 
-
-
-/* estilado de navbar */
+/* Estilos del carrito */
 .cart {
     max-width: 40px;
     border-bottom: 0.5px transparent;
@@ -70,6 +72,7 @@ footer {
     transition: border-bottom 1s;
 }
 
+/* Estilos del Navbar */
 .navbar {
     display: flex;
     flex-direction: row;
@@ -80,7 +83,6 @@ footer {
     gap: 5px;
     overflow: hidden;
     max-width: 100%;
-
 }
 
 .navbar-logo img {
@@ -97,16 +99,15 @@ footer {
 
 .navbar-title span {
     color: #79E06C;
-
 }
 
 .navbar-title:hover {
-    scale: 1.01;
+    transform: scale(1.01);
     color: #FFC327;
     transition: scale 300ms, color 300ms;
 }
 
-
+/* Estilos del formulario de inicio de sesión */
 .loginNavbar {
     display: flex;
     flex-direction: row;
@@ -128,10 +129,9 @@ footer {
 
 .loginNavbar a:hover {
     color: #FFC327;
-    scale: 1.1;
+    transform: scale(1.1);
     transition: 400ms;
 }
-
 
 .loginNavbar img {
     max-width: 50%;
@@ -148,8 +148,7 @@ footer {
     }
 }
 
-/* estilado de "login */
-
+/* Estilos del cuadro de inicio de sesión */
 .loginBox {
     display: flex;
     flex-direction: column;
@@ -164,7 +163,6 @@ footer {
     margin: 1rem;
 }
 
-
 .loginBox h1 {
     padding: 0.3rem;
     color: #FFC327;
@@ -178,8 +176,7 @@ footer {
     color: #79E06C;
 }
 
-
-
+/* Estilos del formulario de inicio de sesión */
 .loginForm {
     display: flex;
     flex-direction: column;
@@ -191,7 +188,6 @@ footer {
     gap: 5px;
     align-items: center;
 }
-
 
 .loginForm p {
     text-align: center;
@@ -227,7 +223,6 @@ footer {
 .loginForm button:hover {
     background-color: #380e2c;
     transition: 700ms;
-
 }
 
 .loginForm button:active {
@@ -236,7 +231,7 @@ footer {
     transition: 100ms;
 }
 
-/* estilado footer */
+/* Estilos del pie de página */
 .footer {
     display: flex;
     flex-direction: column;
@@ -293,20 +288,18 @@ h5 {
 .contact a {
     color: #FFFFFF;
 }
+
 .contact li:hover {
     color: #a83789;
-    scale: 1.1;
+    transform: scale(1.1);
     transition: 400ms;
 }
+
 .contact a:hover {
     color: #a83789;
-    scale: 1.1;
+    transform: scale(1.1);
     transition: 400ms;
 }
-
-
-
-
 
 h6 {
     color: #FFC327;
@@ -317,18 +310,14 @@ h6 {
     margin-top: 20px;
 }
 
-
-
 .contact p {
     color: white;
     font-size: 0.8rem;
     text-align: center;
 }
 
-
-
+/* Estilos responsivos para pantallas grandes */
 @media (min-width: 768px) {
-
     main {
         padding-left: 20%;
         padding-right: 20%;
@@ -342,7 +331,7 @@ h6 {
     .menu li:hover,
     .menu a:hover {
         color: #FFC327;
-        scale: 1.1;
+        transform: scale(1.1);
         transition: 400ms;
     }
 
@@ -368,8 +357,7 @@ h6 {
         transition: 400ms;
     }
 
-
-    /* estilado de hero */
+    /* Estilos del héroe */
     .hero-main {
         padding: 10rem;
         background-position: center;
@@ -396,7 +384,7 @@ h6 {
         cursor: default;
     }
 
-    /* estilado de store */
+    /* Estilos de la tienda */
     .store-title h3 {
         font-size: 6.5rem;
     }
@@ -408,9 +396,9 @@ h6 {
     .storeCategory {
         font-size: 2rem;
     }
-
 }
 
+/* Estilos responsivos para pantallas más grandes */
 @media (min-width: 800px) {
     .storeItems {
         flex-direction: row;
@@ -444,8 +432,4 @@ h6 {
     .footer hr {
         max-width: 100%;
     }
-
-
-
-
 }

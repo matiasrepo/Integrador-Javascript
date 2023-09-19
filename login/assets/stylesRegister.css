@@ -1,9 +1,9 @@
+/* Variables CSS personalizadas */
 :root {
     --bg-aboutUs-color: #7ab573;
     --font-aboutUsSpan-color: #a83789;
     --bg-navbar-color: #621A4E;
     --bg-store-color: #d9d9d9;
-    --bg-aboutUs-color: #252525;
     --bg-storeTitle-color: #AFADAD;
     --font-storeTitle-color: #d9d9d9;
     --bg-storeKitchen-color: #7Ab573;
@@ -17,12 +17,13 @@
     --font-navbarSpan-color: #79E06C;
 }
 
+/* Importar fuentes desde Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Sen&display=swap');
-/* para importar: font-family: 'Sen', sans-serif; */
 
+/* Estilos globales */
 * {
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     list-style: none;
     box-sizing: border-box;
     text-decoration: none;
@@ -33,6 +34,7 @@ body {
     background-color: #252525;
 }
 
+/* Encabezado (Navbar) */
 header {
     background-color: var(--bg-navbar-color);
     max-width: 100%;
@@ -42,7 +44,7 @@ header {
     width: 100%;
 }
 
-
+/* Contenido principal */
 main {
     max-width: 100%;
     margin-top: 80px;
@@ -51,15 +53,13 @@ main {
     padding-top: 20px;
 }
 
-
+/* Pie de página */
 footer {
     background-color: #252525;
     max-width: 100%;
 }
 
-
-
-/* estilado de navbar */
+/* Estilos del carrito */
 .cart {
     max-width: 40px;
     border-bottom: 0.5px transparent;
@@ -71,6 +71,7 @@ footer {
     transition: border-bottom 1s;
 }
 
+/* Estilos del Navbar */
 .navbar {
     display: flex;
     flex-direction: row;
@@ -81,7 +82,6 @@ footer {
     gap: 5px;
     overflow: hidden;
     max-width: 100%;
-
 }
 
 .navbar-logo img {
@@ -93,21 +93,20 @@ footer {
     color: #FFFFFF;
     text-align: center;
     cursor: pointer;
-    transition: scale 300ms, color 300ms;
+    transition: transform 300ms, color 300ms;
 }
 
 .navbar-title span {
     color: #79E06C;
-
 }
 
 .navbar-title:hover {
-    scale: 1.01;
+    transform: scale(1.01);
     color: #FFC327;
-    transition: scale 300ms, color 300ms;
+    transition: transform 300ms, color 300ms;
 }
 
-
+/* Estilos del formulario de inicio de sesión */
 .loginNavbar {
     display: flex;
     flex-direction: row;
@@ -123,16 +122,15 @@ footer {
     display: flex;
     align-items: center;
     color: #FFFFFF;
-    transition: color 400ms, scale 400ms;
+    transition: color 400ms, transform 400ms;
     font-size: 1rem;
 }
 
 .loginNavbar a:hover {
     color: #FFC327;
-    scale: 1.1;
+    transform: scale(1.1);
     transition: 400ms;
 }
-
 
 .loginNavbar img {
     max-width: 50%;
@@ -140,13 +138,11 @@ footer {
 }
 
 @media (max-width: 768px) {
-
     main {
         padding-left: 20%;
         padding-right: 20%;
     }
 
-    
     .loginNavbar img {
         display: none;
     }
@@ -156,8 +152,7 @@ footer {
     }
 }
 
-/* estilado de "login */
-
+/* Estilos del cuadro de inicio de sesión */
 .loginBox {
     display: flex;
     flex-direction: column;
@@ -172,7 +167,6 @@ footer {
     background-color: #621A4E;
     border-radius: 10px;
 }
-
 
 .loginBox h1 {
     padding: 0.3rem;
@@ -207,7 +201,6 @@ footer {
     gap: 0.2rem;
 }
 
-
 .loginForm p {
     text-align: start;
     color: black;
@@ -231,7 +224,6 @@ footer {
 .loginForm button:hover {
     background-color: #380e2c;
     transition: 700ms;
-
 }
 
 .loginForm button:active {
@@ -240,14 +232,13 @@ footer {
     transition: 100ms;
 }
 
-/* estilado footer */
+/* Estilos del pie de página */
 .footer {
     display: flex;
     flex-direction: column;
     align-items: center;
     max-width: 100%;
     margin-top: 30px;
-
 }
 
 .footer p {
@@ -279,7 +270,6 @@ h5 {
     margin: 5px;
 }
 
-
 .contact li {
     color: #FFFFFF;
     font-weight: 200;
@@ -294,7 +284,6 @@ h5 {
     color: #FFFFFF;
 }
 
-
 h6 {
     color: #FFC327;
     font-size: 1.2rem;
@@ -304,6 +293,7 @@ h6 {
     margin-top: 20px;
 }
 
+/* Ubicación del mapa */
 .ubication {
     display: flex;
     flex-direction: column;
@@ -335,7 +325,8 @@ h6 {
     .storeCart {
         font-size: 1rem;
     }
-    .storeCart button{
+
+    .storeCart button {
         max-width: 2rem;
         padding: 2%;
     }
@@ -353,6 +344,4 @@ h6 {
     .footer hr {
         max-width: 100%;
     }
-
-    }
-
+}

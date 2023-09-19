@@ -1,9 +1,8 @@
+/* Estilos para pantallas con ancho máximo de 880px */
 @media (max-width: 880px) {
     .menu-button-container {
         display: flex;
     }
-
-
 
     .menu {
         display: flex;
@@ -61,7 +60,6 @@
         transition: color 400ms;
     }
 
-
     .registerA a {
         color: #FFC327;
         font-weight: 600;
@@ -73,8 +71,8 @@
     }
 }
 
+/* Estilos para pantallas con ancho mínimo de 768px */
 @media (min-width: 768px) {
-
     .menu a,
     .menu li {
         transition: color 400ms, scale 400ms;
@@ -109,8 +107,7 @@
         transition: 400ms;
     }
 
-
-    /* estilado de hero */
+    /* Estilos para la sección de hero */
     .hero-main {
         padding: 4rem;
         background-position: center;
@@ -137,7 +134,7 @@
         cursor: default;
     }
 
-    /* estilado de store */
+    /* Estilos para la sección de tienda */
     .store-title h3 {
         font-size: 6.5rem;
     }
@@ -149,9 +146,9 @@
     .storeCategory {
         font-size: 2rem;
     }
-
 }
 
+/* Estilos adicionales para pantallas con ancho mínimo de 800px */
 @media (min-width: 800px) {
     .storeItems {
         flex-direction: row;
@@ -166,7 +163,8 @@
     .storeCart {
         font-size: 1rem;
     }
-    .storeCart button{
+
+    .storeCart button {
         max-width: 2rem;
         padding: 2%;
     }
@@ -186,9 +184,4 @@
     .footer hr {
         max-width: 100%;
     }
-
-
-
-
-    }
-
+}

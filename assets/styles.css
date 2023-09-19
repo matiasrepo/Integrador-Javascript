@@ -18,7 +18,6 @@
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Sen&display=swap');
-/* para importar: font-family: 'Sen', sans-serif; */
 
 * {
     padding: 0px;
@@ -48,7 +47,6 @@ footer {
     max-width: 100%;
 }
 
-
 .blur {
     -webkit-filter: blur(5px);
     -moz-filter: blur(5px);
@@ -57,7 +55,7 @@ footer {
     filter: blur(5px);
     background-color: #eee;
 }
-/* estilado de navbar */
+
 .cart {
     max-width: 40px;
     border-bottom: 0.5px transparent;
@@ -78,7 +76,6 @@ footer {
     height: 70px;
     gap: 5px;
     overflow: hidden;
-    
 }
 
 .navbar-logo img {
@@ -103,8 +100,6 @@ footer {
     transition: scale 300ms, color 300ms;
 }
 
-/*  debajo la lista oculta */
-
 .menu {
     display: flex;
     flex-direction: row;
@@ -121,7 +116,6 @@ footer {
 .menu a {
     color: white;
     font-family: 'Sen', sans-serif;
-
 }
 
 .menu-button-container {
@@ -174,10 +168,9 @@ footer {
     margin-top: 0px;
     transform: scale(0.5);
     transition: transform 400ms;
-
 }
 
-/* estilado de "about us/hero" */
+/* Estilos para "about us/hero" */
 
 .hero-main {
     background-image: url(./img/jpg/background-hero.jpg);
@@ -190,7 +183,7 @@ footer {
 
 .hero-main-title {
     text-align: center;
-    background-color: #7ab573;
+    background-color: var(--bg-aboutUs-color);
     max-width: 80%;
     padding: 20px 30px 20px 30px;
     border-radius: 30px;
@@ -205,21 +198,18 @@ footer {
 
 .hero-main-title span {
     font-family: 'Sen', sans-serif;
-    color: #a83789;
+    color: var(--font-aboutUsSpan-color);
     font-weight: 400;
     font-size: 1.5rem;
     cursor: pointer;
 }
 
-
-
 .hero-description {
     display: flex;
-    background-color: #252525;
+    background-color: var(--bg-aboutUs-color);
     flex-direction: column;
     padding: 20px;
     font-family: 'Sen', sans-serif;
-
 }
 
 .hero-description p {
@@ -231,18 +221,16 @@ footer {
 }
 
 .hero-description span {
-    color: #FFC327;
+    color: var(--font-storeBoxDetail-color);
 }
 
-
-
-/* estilado de store */
+/* Estilos para "store" */
 
 .store-title {
     text-align: center;
     font-family: 'Sen', sans-serif;
     padding: 20px;
-    background-color: #AFADAD;
+    background-color: var(--bg-storeTitle-color);
     cursor: default;
 }
 
@@ -262,10 +250,10 @@ footer {
 .store-title hr {
     max-width: 35%;
     margin: 20px 32.5% 0 32.5%;
-    color: #FFC327;
-    background-color: #FFC327;
-    border: 1px solid #FFC327;
-    border-color: #FFC327;
+    color: var(--font-storeBoxDetail-color);
+    background-color: var(--font-storeBoxDetail-color);
+    border: 1px solid var(--font-storeBoxDetail-color);
+    border-color: var(--font-storeBoxDetail-color);
     border-radius: 2px;
     outline: none;
     text-align: center;
@@ -276,7 +264,7 @@ footer {
 .storeCategory {
     display: flex;
     justify-content: center;
-    background-color: #7Ab573;
+    background-color: var(--bg-storeKitchen-color);
     margin: 0;
     text-align: center;
     font-family: 'Sen', sans-serif;
@@ -307,17 +295,17 @@ footer {
 }
 
 .storeItems {
-    background-color: #d9d9d9;
+    background-color: var(--bg-store-color);
 }
 
 .storeBox {
     display: flex;
     flex-direction: column;
-    background-color: #621A4E;
+    background-color: var(--bg-storeBox-color);
     margin: 20px;
     justify-content: center;
     max-width: 100%;
-    border: 2px solid #FFFFFF;
+    border: 2px solid var(--border-storeBox-color);
     border-radius: 10px;
     padding: 5px 0px 0px;
 }
@@ -335,7 +323,7 @@ footer {
 .storeProduct {
     display: flex;
     justify-content: space-around;
-    background-color: #621A4E;
+    background-color: var(--bg-storeBox-color);
     font-family: 'Sen', sans-serif;
     font-size: 1rem;
     border-radius: 10px;
@@ -348,12 +336,10 @@ footer {
 
 .storeProduct p {
     color: #FFFFFF;
-
 }
 
-
 .storeCart {
-    background-color: #FFC327;
+    background-color: var(--storeBoxCart-color);
     display: flex;
     justify-content: space-around;
     border-bottom-right-radius: 5px;
@@ -401,7 +387,7 @@ footer {
 }
 
 .storeBox span {
-    color: #FFC327;
+    color: var(--font-storeBoxDetail-color);
     cursor: pointer;
     transition: color 400ms, text-decoration 400ms, scale 500ms;
 }
@@ -412,7 +398,6 @@ footer {
     scale: 1.1;
     transition: 400ms;
 }
-
 
 .noStock {
     color: #FFFFFF;
@@ -426,14 +411,12 @@ footer {
     border-radius: 10px;
 }
 
-
-/* estilado footer */
+/* Estilos para el footer */
 .footer {
     display: flex;
     flex-direction: column;
     align-items: center;
     max-width: 100%;
-
 }
 
 .footer p {
@@ -467,7 +450,6 @@ h5 {
     text-align: center;
 }
 
-
 .contact li {
     color: #FFFFFF;
     font-weight: 200;
@@ -487,6 +469,7 @@ h5 {
     color: #FFC327;
     scale: 1.1;
 }
+
 .contact a:hover {
     color: #FFC327;
     scale: 1.1;
@@ -512,8 +495,8 @@ h6 {
     max-width: 100%;
 }
 
-.contact p { 
+.contact p {
     color: white;
     font-size: 0.8rem;
     text-align: start;
-} 
+}
