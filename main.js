@@ -1,10 +1,10 @@
 const apiKey = '7fabf80c7ad1f705d26be69991bb3d6f'; // Reemplaza con tu clave de API de Marvel
-// URL base de la API de Marvel
 const apiUrl = 'https://gateway.marvel.com/v1/public/';
 
 // Realizar solicitud de superhéroes
-function cargarSuperheroes() {
-    const superheroesEndpoint = `${apiUrl}characters?apikey=${apiKey}&limit=10`;
+function cargarSuperheroes(page) {
+    const offset = (page - 1) * 10; // Calcular el desplazamiento para paginación
+    const superheroesEndpoint = `${apiUrl}characters?apikey=${apiKey}&limit=10&offset=${offset}`;
     fetch(superheroesEndpoint)
         .then(response => response.json())
         .then(data => {
@@ -18,8 +18,9 @@ function cargarSuperheroes() {
 }
 
 // Realizar solicitud de cómics
-function cargarComics() {
-    const comicsEndpoint = `${apiUrl}comics?apikey=${apiKey}&limit=10`;
+function cargarComics(page) {
+    const offset = (page - 1) * 10; // Calcular el desplazamiento para paginación
+    const comicsEndpoint = `${apiUrl}comics?apikey=${apiKey}&limit=10&offset=${offset}`;
     fetch(comicsEndpoint)
         .then(response => response.json())
         .then(data => {
@@ -32,6 +33,10 @@ function cargarComics() {
         });
 }
 
+// ...
+
+// ...
+
 let currentPageSuperheroes = 1; // Inicializar contador de página para superhéroes
 let currentPageComics = 1; // Inicializar contador de página para cómics
 
@@ -40,6 +45,7 @@ const btnPrevSuperheroes = document.querySelector('.btn-prev-superheroes');
 btnPrevSuperheroes.addEventListener('click', () => {
     if (currentPageSuperheroes > 1) {
         currentPageSuperheroes--;
+        eliminarSuperheroesAnteriores(); // Eliminar superhéroes anteriores
         cargarSuperheroes(currentPageSuperheroes);
     }
 });
@@ -55,6 +61,7 @@ const btnPrevComics = document.querySelector('.btn-prev-comics');
 btnPrevComics.addEventListener('click', () => {
     if (currentPageComics > 1) {
         currentPageComics--;
+        eliminarComicsAnteriores(); // Eliminar cómics anteriores
         cargarComics(currentPageComics);
     }
 });
@@ -65,6 +72,8 @@ btnNextComics.addEventListener('click', () => {
     eliminarComicsAnteriores(); // Eliminar cómics anteriores
     cargarComics(currentPageComics);
 });
+
+// ...
 
 // ...
 
@@ -82,13 +91,6 @@ function eliminarComicsAnteriores() {
     }
 }
 
-
 // Cargar superhéroes y cómics al cargar la página inicialmente
 cargarSuperheroes(currentPageSuperheroes);
 cargarComics(currentPageComics);
-
-// Cargar superhéroes y cómics al cargar la página
-window.addEventListener('DOMContentLoaded', () => {
-    cargarSuperheroes();
-    cargarComics();
-});
