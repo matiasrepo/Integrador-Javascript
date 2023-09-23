@@ -75,6 +75,79 @@ function mostrarComics(comics) {
         comicsContainer.appendChild(comicCard);
     });
 }
+// ...
+
+let currentPageSuperheroes = 1; // Inicializar contador de página para superhéroes
+let currentPageComics = 1; // Inicializar contador de página para cómics
+
+// Manejadores de eventos para los botones de paginación
+const btnPrevSuperheroes = document.querySelector('.btn-prev-superheroes');
+btnPrevSuperheroes.addEventListener('click', () => {
+    if (currentPageSuperheroes > 1) {
+        currentPageSuperheroes--;
+        cargarSuperheroes(currentPageSuperheroes);
+    }
+});
+
+const btnNextSuperheroes = document.querySelector('.btn-next-superheroes');
+btnNextSuperheroes.addEventListener('click', () => {
+    currentPageSuperheroes++;
+    cargarSuperheroes(currentPageSuperheroes);
+});
+
+const btnPrevComics = document.querySelector('.btn-prev-comics');
+btnPrevComics.addEventListener('click', () => {
+    if (currentPageComics > 1) {
+        currentPageComics--;
+        cargarComics(currentPageComics);
+    }
+});
+
+const btnNextComics = document.querySelector('.btn-next-comics');
+btnNextComics.addEventListener('click', () => {
+    currentPageComics++;
+    cargarComics(currentPageComics);
+});
+
+// ...
+
+function cargarSuperheroes(page) {
+    const superheroesEndpoint = `${apiUrl}characters?apikey=${apiKey}&limit=10&offset=${(page - 1) * 10}`;
+    // Resto 1 porque las páginas comienzan desde 0 en la API
+
+    fetch(superheroesEndpoint)
+        .then(response => response.json())
+        .then(data => {
+            if (data.data && data.data.results) {
+                mostrarSuperheroes(data.data.results);
+            }
+        })
+        .catch(error => {
+            console.error('Error al cargar superhéroes:', error);
+        });
+}
+
+function cargarComics(page) {
+    const comicsEndpoint = `${apiUrl}comics?apikey=${apiKey}&limit=10&offset=${(page - 1) * 10}`;
+    // Resto 1 porque las páginas comienzan desde 0 en la API
+
+    fetch(comicsEndpoint)
+        .then(response => response.json())
+        .then(data => {
+            if (data.data && data.data.results) {
+                mostrarComics(data.data.results);
+            }
+        })
+        .catch(error => {
+            console.error('Error al cargar cómics:', error);
+        });
+}
+
+// ...
+
+// Cargar superhéroes y cómics al cargar la página inicialmente
+cargarSuperheroes(currentPageSuperheroes);
+cargarComics(currentPageComics);
 
 // Cargar superhéroes y cómics al cargar la página
 window.addEventListener('DOMContentLoaded', () => {
