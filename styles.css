@@ -1,0 +1,147 @@
+/* Estilos generales */
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #FFFFFF;
+    color: #252525;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #252525;
+    color: #FFFFFF;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin: 0 1rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.news-card {
+    background-color: #FFFFFF;
+    border: 1px solid #d9d9d9;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.news-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.news-card p {
+    font-size: 1rem;
+}
+
+.news-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+footer {
+    background-color: #252525;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+/* Estilos para pantallas de 350px a 767px */
+@media (max-width: 767px) {
+    .news-cards {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .news-card {
+        max-width: 100%;
+    }
+}
+
+/* Estilos para pantallas de 768px a 967px */
+@media (min-width: 768px) and (max-width: 967px) {
+    .news-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .news-card {
+        max-width: calc(50% - 20px);
+        margin: 10px;
+    }
+}
+
+/* Estilos para pantallas de 968px a 1023px */
+@media (min-width: 968px) and (max-width: 1023px) {
+    .news-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .news-card {
+        max-width: calc(33.33% - 20px);
+        margin: 10px;
+    }
+}
+
+/* Estilos para pantallas de 1024px a 1199px */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .news-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .news-card {
+        max-width: calc(25% - 20px);
+        margin: 10px;
+    }
+}
+
+/* Estilos para pantallas de 1200px a 1599px */
+@media (min-width: 1200px) and (max-width: 1599px) {
+    .news-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .news-card {
+        max-width: calc(25% - 20px);
+        margin: 10px;
+    }
+}
+
+/* Estilos para pantallas de 1600px en adelante */
+@media (min-width: 1600px) {
+    .news-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .news-card {
+        max-width: calc(16.66% - 20px);
+        margin: 10px;
+    }
+}

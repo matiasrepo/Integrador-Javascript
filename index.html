@@ -1,292 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StoreDisnav</title>
-    <link rel="stylesheet" href="./assets/styles.css">
-    <link rel="stylesheet" href="./assets/mediaqueries.css">
-    <meta name="theme-color" content="#621A4E" />
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <title>Disnav Noticias</title>
 </head>
 <body>
-    <!-- Encabezado (Navbar) -->
     <header>
-        <nav class="navbar">
-            <div class="navbar-logo">
-                <a href="index.html"><img src="./assets/img/png/logo_noletter.png" alt="logo"></a>
-            </div>
-            <div class="navbar-title">
-                <h1>Distribuidora <span>Naveiro</span></h1>
-            </div>
-
-            <!-- Menú desplegable para pantallas pequeñas -->
-            <input id="menu-toggle" type="checkbox" />
-            <label class='menu-button-container' for="menu-toggle">
-                <div class='menu-button'></div>
-            </label>
-            <ul class="menu">
-                <li><a href="#kitchen">Cocina</a></li>
-                <li><a href="#cleaning">Limpieza</a></li>
-                <li><a href="#accessories">Accesorios</a></li>
-                <li><a href="#decoration">Decoración</a></li>
-                <li><a href="#contact">Contacto</a></li>
-                <li class="logInA"><a target="_blank" href="/login/login.html">Ingresar</a></li>
-                <li class="registerA"><a target="_blank" href="/login/register.html">Regístrate</a></li>
+        <h1>Disnav Noticias</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Noticias</a></li>
+                <li><a href="#">Contacto</a></li>
             </ul>
-            <a href=""><img class="cart" src="./assets/img/png/cart.png" alt="cart"></a>
         </nav>
     </header>
+    
     <main>
-        <!-- Sección "Acerca de nosotros" -->
-        <section id="aboutUs">
-            <div class="hero-main">
-                <div class="hero-main-title">
-                    <h2>Tenemos todo para tu hogar, a un solo clic.</h2>
-                    <p><span>Visita nuestra tienda.</span></p>
-                </div>
-            </div>
-            <div class="hero-description">
-                <hr>
-                <p>Nacida como una empresa familiar hace más de 20 años, hoy Disnav excede en los estándares de servicio
-                    y calidad.
-                    Brindando precios accesibles y entregas rápidas para satisfacer a sus clientes.</p>
-                <p id="store"><span>Eligiendo DisNav, no solo eliges excelencia, eliges familia.</span></p>
-                <hr>
-            </div>
-        </section>
-
-        <!-- Sección "Tienda" -->
-        <section id="store">
-            <div class="store-title">
-                <h3>Tienda DisNav</h3>
-                <p>Lo mejor para tu hogar</p>
-                <hr>
-            </div>
-            <!-- Categoría "Cocina" -->
-            <div class="store" id="kitchen">
-                <div class="storeCategory">
-                    <img src="./assets/img/png/expandIcon.png" alt="expand">
-                    <h4>Para tu cocina</h4>
-                    <img src="./assets/img/png/expandIcon.png" alt="expand">
-                </div>
-                <div class="storeItems">
-                    <!-- Producto 1 -->
-                    <div class="storeBox">
-                        <div class="storeProduct">
-                            <p>Essen Marrón</p>
-                            <p><span>Agregar al carrito</span></p>
-                        </div>
-                        <div class="storeProductImg">
-                            <img src="./assets/img/jpg/cacerola.jpg" alt="cacerola">
-                        </div>
-                        <div class="storeCart">
-                            <p>Precio: 3BTC</p>
-                            <div class="storeStock">
-                                <button>-</button>
-                                <p>0</p>
-                                <button>+</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Producto 2 -->
-                    <div class="storeBox">
-                        <div class="storeProduct">
-                            <p>KIT Churrasco</p>
-                            <p><span>Agregar al carrito</span></p>
-                        </div>
-                        <div class="storeProductImg">
-                            <img src="./assets/img/jpg/tenedores.png" alt="tenedores">
-                        </div>
-                        <div class="storeCart">
-                            <p>Precio: 2BTC</p>
-                            <div class="storeStock">
-                                <button>-</button>
-                                <p>0</p>
-                                <button>+</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Producto 3 -->
-                    <div class="storeBox">
-                        <div class="storeProduct">
-                            <p>KIT Sakura</p>
-                            <p><span>Agregar al carrito</span></p>
-                        </div>
-                        <div class="storeProductImg">
-                            <img src="./assets/img/jpg/platos.jpg" alt="platos">
-                        </div>
-                        <div class="storeCart">
-                            <p>Precio: 1BTC</p>
-                            <div class="storeStock">
-                                <button>-</button>
-                                <p>0</p>
-                                <button>+</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Producto 4 -->
-                    <div class="storeBox">
-                        <div class="storeProduct">
-                            <p>KIT Vaso x6</p>
-                            <p><span>Agregar al carrito</span></p>
-                        </div>
-                        <div class="storeProductImg">
-                            <img src="./assets/img/jpg/vasos.jpg" alt="vasos">
-                        </div>
-                        <div class="storeCart">
-                            <p>Precio: 5BTC</p>
-                            <div class="storeStock">
-                                <button>-</button>
-                                <p>0</p>
-                                <button>+</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Categoría "Limpieza" -->
-            <div class="store" id="cleaning">
-                <div class="storeCategory">
-                    <img src="./assets/img/png/expandIcon.png" alt="expand">
-                    <h4>Para limpiar</h4>
-                    <img src="./assets/img/png/expandIcon.png" alt="expand">
-                </div>
-                <div class="storeItems">
-                    <!-- Producto 1 -->
-                    <div class="storeBox">
-                        <div class="storeProduct">
-                            <p>Trapos de cocina</p>
-                            <p><span>Agregar al carrito</span></p>
-                        </div>
-                        <div class="storeProductImg">
-                            <img src="./assets/img/jpg/trapos.jpg" alt="traposCocina">
-                        </div>
-                        <div class="storeCart">
-                            <p>Precio: 1BTC</p>
-                            <div class="storeStock">
-                                <button>-</button>
-                                <p>0</p>
-                                <button>+</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Producto 2 -->
-                    <div class="storeBox">
-                        <div class="storeProduct">
-                            <p>Trapos de piso</p>
-                            <p><span>Agregar al carrito</span></p>
-                        </div>
-                        <div class="storeProductImg">
-                            <img src="./assets/img/jpg/traposPiso.jpg" alt="traposPiso">
-                        </div>
-                        <div class="storeCart">
-                            <p>Precio: 4BTC</p>
-                            <div class="storeStock">
-                                <button>-</button>
-                                <p>0</p>
-                                <button>+</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Producto 3 -->
-                    <div class="storeBox">
-                        <div class="storeProduct">
-                            <p>Balde con escurridor</p>
-                            <p><span>Agregar al carrito</span></p>
-                        </div>
-                        <div class="storeProductImg">
-                            <img src="./assets/img/jpg/balde.jpg" alt="balde">
-                        </div>
-                        <div class="storeCart">
-                            <p>Precio: 10BTC</p>
-                            <div class="storeStock">
-                                <button>-</button>
-                                <p>0</p>
-                                <button>+</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Producto 4 -->
-                    <div class="storeBox">
-                        <div class="storeProduct">
-                            <p>Cepillo Caribe</p>
-                            <p><span>Agregar al carrito</span></p>
-                        </div>
-                        <div class="storeProductImg">
-                            <img src="./assets/img/jpg/cepillo.jpg" alt="cepillo">
-                        </div>
-                        <div class="storeCart">
-                            <p>Precio: 6BTC</p>
-                            <div class="storeStock">
-                                <button>-</button>
-                                <p>0</p>
-                                <button>+</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Categorías "Accesorios" y "Decoración" sin stock -->
-            <div class="store" id="accessories">
-                <div class="storeCategory">
-                    <img src="./assets/img/png/expandIcon.png" alt="expand">
-                    <h4>Accesorios</h4>
-                    <img src="./assets/img/png/expandIcon.png" alt="expand">
-                </div>
-                <div class="storeItems">
-                    <div class="noStock">
-                        <p>Whoops! De momento, no tenemos stock para ofrecerte</p>
-                    </div>
-                </div>
-            </div>
-            <div class="store" id="decoration">
-                <div class="storeCategory">
-                    <img src="./assets/img/png/expandIcon.png" alt="expand">
-                    <h4>Decoración</h4>
-                    <img src="./assets/img/png/expandIcon.png" alt="expand">
-                </div>
-                <div class="storeItems">
-                    <div class="noStock">
-                        <p>Whoops! De momento, no tenemos stock para ofrecerte</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div class="news-cards"> </div>
     </main>
-    <!-- Pie de página -->
+    
     <footer>
-        <div class="footer">
-            <div class="trademark">
-                <hr>
-                <h5>DisNav es una marca registrada.</h5>
-            </div>
-            <div class="contact" id="contact">
-                <h6>Nosotros:</h6>
-                <ul>
-                    <li>Email: <span>callefalsa1234@siempreviva.com</span></li>
-                    <li>Teléfono (solo WhatsApp): <span>123456789</span></li>
-                    <li><span>Mapa de sitio</span></li>
-                </ul>
-                <h6>Redes:</h6>
-                <ul>
-                    <li><a href="#footer">Instagram</a></li>
-                    <li><a href="#footer">LinkedIn</a></li>
-                    <li><a href="#footer">Facebook</a></li>
-                    <li><a href="#footer">Mercado Libre</a></li>
-                </ul>
-                <div class="ubication">
-                    <h6>Donde estamos:</h6>
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52535.910450643474!2d-58.57427325136717!3d-34.6169444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc9d7353a9d07%3A0xf09d534090643651!2sClub%20Atl%C3%A9tico%20All%20Boys!5e0!3m2!1ses-419!2sar!4v1687297176270!5m2!1ses-419!2sar"
-                        width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-            <hr>
-            <p>Copyright 2023 - DisNav - Distribuidora Naveiro</p>
-        </div>
+        <p>&copy; 2023 Disnav Noticias</p>
     </footer>
+    <script src="main.js"></script>
 </body>
 </html>
