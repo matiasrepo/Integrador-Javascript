@@ -1,4 +1,4 @@
-const apiKey = "02f07ccab23a7bb1dd2e6466cccdd320641f9ad8"; // Reemplaza con tu clave de API de Marvel
+const apiKey = "7fabf80c7ad1f705d26be69991bb3d6f"; // Reemplaza con tu clave de API de Marvel
 const apiUrl = "https://gateway.marvel.com/v1/public/";
 
 // Realizar solicitud de superhéroes
@@ -41,7 +41,35 @@ let currentPageSuperheroes = 1; // Inicializar contador de página para superhé
 let currentPageComics = 1; // Inicializar contador de página para cómics
 
 // Manejadores de eventos para los botones de paginación
-const btnPrevSuperheroes = document.querySelector(".btn-prev-superheroes");
+// ...
+
+// Crear elementos HTML para los botones de paginación de superhéroes
+const btnPrevSuperheroes = document.createElement("button");
+btnPrevSuperheroes.textContent = "Página Anterior";
+btnPrevSuperheroes.classList.add("btn-prev-superheroes");
+const btnNextSuperheroes = document.createElement("button");
+btnNextSuperheroes.textContent = "Página Siguiente";
+btnNextSuperheroes.classList.add("btn-next-superheroes");
+
+// Agregar los botones de paginación a la página
+const superheroesPagination = document.querySelector(".superheroes-pagination");
+superheroesPagination.appendChild(btnPrevSuperheroes);
+superheroesPagination.appendChild(btnNextSuperheroes);
+
+// Crear elementos HTML para los botones de paginación de cómics
+const btnPrevComics = document.createElement("button");
+btnPrevComics.textContent = "Página Anterior";
+btnPrevComics.classList.add("btn-prev-comics");
+const btnNextComics = document.createElement("button");
+btnNextComics.textContent = "Página Siguiente";
+btnNextComics.classList.add("btn-next-comics");
+
+// Agregar los botones de paginación a la página
+const comicsPagination = document.querySelector(".comics-pagination");
+comicsPagination.appendChild(btnPrevComics);
+comicsPagination.appendChild(btnNextComics);
+
+// Manejadores de eventos para los botones de paginación
 btnPrevSuperheroes.addEventListener("click", () => {
 	if (currentPageSuperheroes > 1) {
 		currentPageSuperheroes--;
@@ -50,14 +78,12 @@ btnPrevSuperheroes.addEventListener("click", () => {
 	}
 });
 
-const btnNextSuperheroes = document.querySelector(".btn-next-superheroes");
 btnNextSuperheroes.addEventListener("click", () => {
 	currentPageSuperheroes++;
 	eliminarSuperheroesAnteriores(); // Eliminar superhéroes anteriores
 	cargarSuperheroes(currentPageSuperheroes);
 });
 
-const btnPrevComics = document.querySelector(".btn-prev-comics");
 btnPrevComics.addEventListener("click", () => {
 	if (currentPageComics > 1) {
 		currentPageComics--;
@@ -66,7 +92,6 @@ btnPrevComics.addEventListener("click", () => {
 	}
 });
 
-const btnNextComics = document.querySelector(".btn-next-comics");
 btnNextComics.addEventListener("click", () => {
 	currentPageComics++;
 	eliminarComicsAnteriores(); // Eliminar cómics anteriores
@@ -76,20 +101,6 @@ btnNextComics.addEventListener("click", () => {
 // ...
 
 // ...
-
-function eliminarSuperheroesAnteriores() {
-	const superheroesContainer = document.querySelector(".superheroes-container");
-	while (superheroesContainer.firstChild) {
-		superheroesContainer.removeChild(superheroesContainer.firstChild);
-	}
-}
-
-function eliminarComicsAnteriores() {
-	const comicsContainer = document.querySelector(".comics-container");
-	while (comicsContainer.firstChild) {
-		comicsContainer.removeChild(comicsContainer.firstChild);
-	}
-}
 
 // Cargar superhéroes y cómics al cargar la página inicialmente
 cargarSuperheroes(currentPageSuperheroes);
