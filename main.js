@@ -76,9 +76,6 @@ function mostrarComics(comics) {
     });
 }
 
-// ...
-
-
 // Cargar superhéroes y cómics al cargar la página
 window.addEventListener('DOMContentLoaded', () => {
     cargarSuperheroes();
