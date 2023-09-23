@@ -126,40 +126,45 @@ function mostrarComics(comics) {
 
 
 function mostrarFavoritos() {
-	const favoritosContainer = document.querySelector(".favoritos-container");
-	favoritosContainer.innerHTML = "";
+    const favoritosContainer = document.querySelector(".favoritos-container");
+    favoritosContainer.innerHTML = "";
 
-	favoritos.forEach((superheroe) => {
-		const superheroeCard = document.createElement("div");
-		superheroeCard.classList.add("superhero-card", "favorito");
+    let tarjetasLimitadas = 0;
+    favoritos.forEach((superheroe) => {
+        if (tarjetasLimitadas < 3) {
+            const superheroeCard = document.createElement("div");
+            superheroeCard.classList.add("superhero-card", "favorito");
 
-		const name = document.createElement("h2");
-		name.textContent = superheroe.name;
+            const name = document.createElement("h2");
+            name.textContent = superheroe.name;
 
-		if (
-			superheroe.thumbnail &&
-			superheroe.thumbnail.path &&
-			superheroe.thumbnail.extension
-		) {
-			const imageUrl = `${superheroe.thumbnail.path}.${superheroe.thumbnail.extension}`;
-			const image = document.createElement("img");
-			image.src = imageUrl;
-			superheroeCard.appendChild(image);
-		}
+            if (
+                superheroe.thumbnail &&
+                superheroe.thumbnail.path &&
+                superheroe.thumbnail.extension
+            ) {
+                const imageUrl = `${superheroe.thumbnail.path}.${superheroe.thumbnail.extension}`;
+                const image = document.createElement("img");
+                image.src = imageUrl;
+                superheroeCard.appendChild(image);
+            }
 
-		superheroeCard.appendChild(name);
+            superheroeCard.appendChild(name);
 
-		const removeButton = document.createElement("button");
-		removeButton.textContent = "Quitar de Favoritos";
-		removeButton.classList.add("btn-remove-favorito");
-		removeButton.addEventListener("click", () => {
-			toggleFavorito(superheroe, superheroeCard);
-		});
-		superheroeCard.appendChild(removeButton);
+            const removeButton = document.createElement("button");
+            removeButton.textContent = "Quitar de Favoritos";
+            removeButton.classList.add("btn-remove-favorito");
+            removeButton.addEventListener("click", () => {
+                toggleFavorito(superheroe, superheroeCard);
+            });
+            superheroeCard.appendChild(removeButton);
 
-		favoritosContainer.appendChild(superheroeCard);
-	});
+            favoritosContainer.appendChild(superheroeCard);
+            tarjetasLimitadas++;
+        }
+    });
 }
+
 
 let notificationTimeout; // Variable para controlar el tiempo de la notificación
 
