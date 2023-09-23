@@ -128,12 +128,6 @@ function eliminarComicsAnteriores() {
     }
 }
 
-// ...
-
-// Cargar superhéroes y cómics al cargar la página inicialmente
-cargarSuperheroes(currentPageSuperheroes);
-cargarComics(currentPageComics);
-
 
 // Cargar superhéroes y cómics al cargar la página inicialmente
 cargarSuperheroes(currentPageSuperheroes);
