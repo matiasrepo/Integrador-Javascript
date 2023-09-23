@@ -1,4 +1,4 @@
-const apiKey = "7fabf80c7ad1f705d26be69991bb3d6f"; // Reemplaza con tu clave de API de Marvel
+const apiKey = "02f07ccab23a7bb1dd2e6466cccdd320641f9ad8"; // Reemplaza con tu clave de API de Marvel
 const apiUrl = "https://gateway.marvel.com/v1/public/";
 
 // Realizar solicitud de superhéroes
