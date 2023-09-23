@@ -76,6 +76,7 @@ function mostrarComics(comics) {
     });
 }
 // ...
+// ...
 
 let currentPageSuperheroes = 1; // Inicializar contador de página para superhéroes
 let currentPageComics = 1; // Inicializar contador de página para cómics
@@ -92,6 +93,7 @@ btnPrevSuperheroes.addEventListener('click', () => {
 const btnNextSuperheroes = document.querySelector('.btn-next-superheroes');
 btnNextSuperheroes.addEventListener('click', () => {
     currentPageSuperheroes++;
+    eliminarSuperheroesAnteriores(); // Eliminar superhéroes anteriores
     cargarSuperheroes(currentPageSuperheroes);
 });
 
@@ -106,44 +108,32 @@ btnPrevComics.addEventListener('click', () => {
 const btnNextComics = document.querySelector('.btn-next-comics');
 btnNextComics.addEventListener('click', () => {
     currentPageComics++;
+    eliminarComicsAnteriores(); // Eliminar cómics anteriores
     cargarComics(currentPageComics);
 });
 
 // ...
 
-function cargarSuperheroes(page) {
-    const superheroesEndpoint = `${apiUrl}characters?apikey=${apiKey}&limit=10&offset=${(page - 1) * 10}`;
-    // Resto 1 porque las páginas comienzan desde 0 en la API
-
-    fetch(superheroesEndpoint)
-        .then(response => response.json())
-        .then(data => {
-            if (data.data && data.data.results) {
-                mostrarSuperheroes(data.data.results);
-            }
-        })
-        .catch(error => {
-            console.error('Error al cargar superhéroes:', error);
-        });
+function eliminarSuperheroesAnteriores() {
+    const superheroesContainer = document.querySelector('.superheroes-container');
+    while (superheroesContainer.firstChild) {
+        superheroesContainer.removeChild(superheroesContainer.firstChild);
+    }
 }
 
-function cargarComics(page) {
-    const comicsEndpoint = `${apiUrl}comics?apikey=${apiKey}&limit=10&offset=${(page - 1) * 10}`;
-    // Resto 1 porque las páginas comienzan desde 0 en la API
-
-    fetch(comicsEndpoint)
-        .then(response => response.json())
-        .then(data => {
-            if (data.data && data.data.results) {
-                mostrarComics(data.data.results);
-            }
-        })
-        .catch(error => {
-            console.error('Error al cargar cómics:', error);
-        });
+function eliminarComicsAnteriores() {
+    const comicsContainer = document.querySelector('.comics-container');
+    while (comicsContainer.firstChild) {
+        comicsContainer.removeChild(comicsContainer.firstChild);
+    }
 }
 
 // ...
+
+// Cargar superhéroes y cómics al cargar la página inicialmente
+cargarSuperheroes(currentPageSuperheroes);
+cargarComics(currentPageComics);
+
 
 // Cargar superhéroes y cómics al cargar la página inicialmente
 cargarSuperheroes(currentPageSuperheroes);
