@@ -32,12 +32,25 @@ function cargarComics() {
         });
 }
 
+// ...
+
 function mostrarSuperheroes(superheroes) {
     const superheroesContainer = document.querySelector('.superheroes-container');
     superheroes.forEach(superheroe => {
         const superheroeCard = document.createElement('div');
         superheroeCard.classList.add('superhero-card');
-        superheroeCard.textContent = superheroe.name;
+        
+        const name = document.createElement('h2');
+        name.textContent = superheroe.name;
+
+        if (superheroe.thumbnail && superheroe.thumbnail.path && superheroe.thumbnail.extension) {
+            const imageUrl = `${superheroe.thumbnail.path}.${superheroe.thumbnail.extension}`;
+            const image = document.createElement('img');
+            image.src = imageUrl;
+            superheroeCard.appendChild(image);
+        }
+        
+        superheroeCard.appendChild(name);
         superheroesContainer.appendChild(superheroeCard);
     });
 }
@@ -47,10 +60,24 @@ function mostrarComics(comics) {
     comics.forEach(comic => {
         const comicCard = document.createElement('div');
         comicCard.classList.add('comic-card');
-        comicCard.textContent = comic.title;
+
+        const title = document.createElement('h2');
+        title.textContent = comic.title;
+
+        if (comic.thumbnail && comic.thumbnail.path && comic.thumbnail.extension) {
+            const imageUrl = `${comic.thumbnail.path}.${comic.thumbnail.extension}`;
+            const image = document.createElement('img');
+            image.src = imageUrl;
+            comicCard.appendChild(image);
+        }
+
+        comicCard.appendChild(title);
         comicsContainer.appendChild(comicCard);
     });
 }
+
+// ...
+
 
 // Cargar superhéroes y cómics al cargar la página
 window.addEventListener('DOMContentLoaded', () => {
