@@ -2,7 +2,6 @@ const apiKey = '29993103bd6f4c459f2a845005acd9e3';
 const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`;
 
 // Función para cargar las noticias desde la API
-// Función para cargar las noticias desde la API
 function cargarNoticias() {
     fetch(apiUrl)
         .then(response => {
