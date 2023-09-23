@@ -3,6 +3,35 @@ const apiKey = '7fabf80c7ad1f705d26be69991bb3d6f'; // Reemplaza con tu clave de 
 // URL base de la API de Marvel
 const apiUrl = 'https://gateway.marvel.com/v1/public/';
 
+// Realizar solicitud de superhéroes
+function cargarSuperheroes() {
+    const superheroesEndpoint = `${apiUrl}characters?apikey=${apiKey}&limit=10`;
+    fetch(superheroesEndpoint)
+        .then(response => response.json())
+        .then(data => {
+            if (data.data && data.data.results) {
+                mostrarSuperheroes(data.data.results);
+            }
+        })
+        .catch(error => {
+            console.error('Error al cargar superhéroes:', error);
+        });
+}
+
+// Realizar solicitud de cómics
+function cargarComics() {
+    const comicsEndpoint = `${apiUrl}comics?apikey=${apiKey}&limit=10`;
+    fetch(comicsEndpoint)
+        .then(response => response.json())
+        .then(data => {
+            if (data.data && data.data.results) {
+                mostrarComics(data.data.results);
+            }
+        })
+        .catch(error => {
+            console.error('Error al cargar cómics:', error);
+        });
+}
 
 // ...
 
@@ -118,12 +147,3 @@ window.addEventListener('DOMContentLoaded', () => {
     cargarComics();
 });
 
-// ... (código posterior)
-
-
-
-// Cargar superhéroes y cómics al cargar la página
-window.addEventListener('DOMContentLoaded', () => {
-    cargarSuperheroes();
-    cargarComics();
-});
