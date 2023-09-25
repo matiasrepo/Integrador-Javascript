@@ -14,6 +14,23 @@ const errorMessage = document.getElementById("error-message");
 const loginFormElement = document.querySelector("#login-form form");
 const favoritosIcon = document.getElementById("btn-favoritos");
 
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const menuIcon = document.querySelector('.menu-icon');
+    const navMenu = document.querySelector('nav ul');
+    const menuBg = document.querySelector('.menu-bg');
+
+    // Agrega un evento de clic al botón de menú hamburguesa
+    menuIcon.addEventListener('click', function () {
+        // Toggle la clase 'active' en el menú de navegación para mostrar/ocultar el menú
+        navMenu.classList.toggle('active');
+        // Toggle la clase 'active' en el fondo borroso para mostrar/ocultar el fondo
+        menuBg.classList.toggle('active');
+      
+    });
+});
+
 favoritosIcon.addEventListener("click", function () {
     if (modalFavoritos.style.display === "block") {
         modalFavoritos.style.display = "none";
@@ -82,21 +99,6 @@ modalBg.addEventListener("click", function (event) {
 	}
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    const menuIcon = document.querySelector('.menu-icon');
-    const navMenu = document.querySelector('nav ul');
-    const menuBg = document.querySelector('.menu-bg');
-
-    // Agrega un evento de clic al botón de menú hamburguesa
-    menuIcon.addEventListener('click', function () {
-        // Toggle la clase 'active' en el menú de navegación para mostrar/ocultar el menú
-        navMenu.classList.toggle('active');
-        // Toggle la clase 'active' en el fondo borroso para mostrar/ocultar el fondo
-        menuBg.classList.toggle('active');
-        // Toggle la clase 'active' en el botón de menú hamburguesa para cambiar su apariencia
-        menuIcon.classList.toggle('active');
-    });
-});
 
 
 function toggleFavorito(elemento, elementoCard) {

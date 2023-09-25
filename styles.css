@@ -7,14 +7,14 @@ html {
 /* Estilos generales */
 body {
     font-family: 'Lato', sans-serif;
-    background-color: #f0f0f0;
+    background-color: #dfdede;
     color: #000;
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: #300b0b;
+    background-color: #000000;
     color: #fff;
     padding: 1rem 0;
     display: flex;
@@ -30,18 +30,109 @@ header h1 {
     flex-grow: 1;
 }
 
-
+/* Estilos generales del footer */
 footer {
-    background-color: #252525;
-    color: #fff;
-    text-align: center;
-    padding: 1rem 0;
+    background-color: #f7f7f7;
+    padding: 40px 0;
+    color: #333;
+    font-family: Arial, sans-serif;
 }
 
-nav {
-    display: flex;
-    align-items: center;
+/* Estilos para el banner de introducción */
+.intro-banner {
+    background-color: #201f1f;
+    color: #ff8282; 
+    padding: 30px;
+    text-align: center;
 }
+
+.intro-banner h2 {
+    font-size: 2.5rem; 
+    margin-bottom: 10px;
+}
+
+.intro-banner p {
+    font-size: 1.5rem; 
+    line-height: 1.5;
+}
+
+.intro-banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://www.denofgeek.com/wp-content/uploads/2022/07/marvel-axe-judgment-day.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(20px);
+    /* Ajusta el valor para el nivel de desenfoque deseado */
+    z-index: -1;
+}
+
+/* Estilos para el logo */
+.rounded-logo {
+    width: 150px; 
+    height: auto; 
+    border-radius: 50%; 
+}
+
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 5px 0;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Estilos específicos para los enlaces */
+.footer-section ul li a {
+    display: inline-block;
+    padding: 3px 0;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #0070c9;
+}
+
 
 .menu-icon {
     display: none;
@@ -52,6 +143,7 @@ nav {
     height: 20px;
     margin-right: 20px;
 }
+
 /* Estilos para el fondo borroso del menú hamburguesa */
 .menu-bg {
     display: none;
@@ -63,7 +155,9 @@ nav {
     height: 100%;
     backdrop-filter: blur(10px);
     background-color: rgba(0, 0, 0, 0.5);
+
 }
+
 
 /* Estilos para mostrar el menú hamburguesa */
 .menu-icon.active .bar:nth-child(1) {
@@ -82,11 +176,17 @@ nav {
     display: block;
 }
 
+
 .bar {
     background-color: #fff;
     width: 100%;
     height: 3px;
     border-radius: 3px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
 }
 
 nav ul {
@@ -127,6 +227,7 @@ nav a:hover {
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.7);
 }
+
 
 #login-form .modal-content {
     background-color: #8f031a;
@@ -387,6 +488,7 @@ nav a:hover {
     transform: scale(1.02);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+
 .separador-banner {
     position: relative;
     background-image: url('https://www.denofgeek.com/wp-content/uploads/2022/07/marvel-axe-judgment-day.jpg');
@@ -408,28 +510,32 @@ nav a:hover {
     background-image: url('https://www.denofgeek.com/wp-content/uploads/2022/07/marvel-axe-judgment-day.jpg');
     background-size: cover;
     background-position: center;
-    filter: blur(5px); /* Ajusta el valor para el nivel de desenfoque deseado */
+    filter: blur(20px);
+    /* Ajusta el valor para el nivel de desenfoque deseado */
     z-index: -1;
 }
 
 
 .separador-banner h2 {
-    font-size: 3rem; /* Aumenta el tamaño del título */
-    margin-bottom: 20px; /* Mayor espacio inferior */
+    font-size: 3rem;
+    /* Aumenta el tamaño del título */
+    margin-bottom: 20px;
+    /* Mayor espacio inferior */
 }
 
 .separador-banner p {
-    font-size: 1.2rem; /* Aumenta el tamaño del texto */
+    font-size: 1.5rem;
     margin: 0;
-    max-width: 600px; /* Establece un ancho máximo para que el texto no sea demasiado ancho en pantallas grandes */
-    margin: 0 auto; /* Centra el contenido horizontalmente */
-    line-height: 1.5; /* Espaciado entre líneas para una mejor legibilidad */
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
 }
 
 /* Estilos para pantallas de 768px a 1023px (Tablet) */
 @media (min-width: 768px) and (max-width: 1023px) {
     .separador-banner {
-        padding: 80px 0; /* Ajusta el espacio en pantallas de tablet */
+        padding: 80px 0;
+        /* Ajusta el espacio en pantallas de tablet */
     }
 }
 
@@ -437,137 +543,141 @@ nav a:hover {
 @media (max-width: 767px) {
     @media (max-width: 767px) {
         .separador-banner {
-            padding: 60px 0; /* Ajusta el espacio en pantallas de móvil */
+            padding: 60px 0;
+            /* Ajusta el espacio en pantallas de móvil */
         }
-}
-
-/* Estilos para la notificación */
-.notificacion {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #4CAF50;
-    color: #fff;
-    padding: 10px 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
-/* Estilo para el icono */
-.notificacion .icono {
-    margin-right: 10px;
-}
-
-/* Estilo para el texto */
-.notificacion .texto {
-    flex-grow: 1;
-}
-
-/* Estilo para mostrar la notificación */
-.notificacion.mostrar {
-    opacity: 1;
-}
-
-/* Estilos para el menú hamburguesa */
-.menu-icon {
-    display: none;
-    cursor: pointer;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 20px;
-    margin-right: 20px;
-    position: relative;
-}
-
-.bar {
-    background-color: #fff;
-    width: 100%;
-    height: 3px;
-    border-radius: 3px;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-
-
-
-/* Estilos para pantallas de 768px a 1023px (Tablet) */
-@media (min-width: 768px) and (max-width: 1023px) {
-    .menu-icon {
-        display: flex;
     }
 
-    nav ul {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background-color: #300b0b;
-        padding: 0;
+    /* Estilos para la notificación */
+    .notificacion {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 10px 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
         text-align: center;
-        z-index: 1;
-        transform: translateY(-100%);
-        opacity: 0;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    nav ul.active {
-        transform: translateY(0);
-        opacity: 1;
         display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
     }
 
-    nav ul li {
-        margin: 10px 0;
+    /* Estilo para el icono */
+    .notificacion .icono {
+        margin-right: 10px;
     }
 
-    .menu-bg.active {
-        display: block;
+    /* Estilo para el texto */
+    .notificacion .texto {
+        flex-grow: 1;
     }
-}
 
-/* Estilos para pantallas de 767px o menos (Móvil) */
-@media (max-width: 767px) {
+    /* Estilo para mostrar la notificación */
+    .notificacion.mostrar {
+        opacity: 1;
+    }
+
+    /* Estilos para el menú hamburguesa */
     .menu-icon {
-        display: flex;
-    }
-
-    nav ul {
         display: none;
+        cursor: pointer;
         flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
+        justify-content: space-between;
+        width: 30px;
+        height: 20px;
+        margin-right: 20px;
+        position: relative;
+    }
+
+    .bar {
+        background-color: #fff;
         width: 100%;
-        background-color: #300b0b;
-        padding: 0;
-        text-align: center;
-        z-index: 1;
-        transform: translateY(-100%);
-        opacity: 0;
-        transition: transform 0.3s ease, opacity 0.3s ease;
+        height: 3px;
+        border-radius: 3px;
+        transition: transform 0.2s ease, opacity 0.2s ease;
     }
 
-    nav ul.active {
-        transform: translateY(0);
-        opacity: 1;
-        display: flex;
+
+
+
+    /* Estilos para pantallas de 768px a 1023px (Tablet) */
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .menu-icon {
+            display: flex;
+        }
+
+        nav ul {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background-color: #300b0b;
+            padding: 0;
+            text-align: center;
+            z-index: 1;
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        nav ul.active {
+            transform: translateY(0);
+            opacity: 1;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 10px 0;
+        }
+
+        .menu-bg.active {
+            display: block;
+        }
     }
 
-    nav ul li {
-        margin: 10px 0;
-    }
+    /* Estilos para pantallas de 767px o menos (Móvil) */
+    @media (max-width: 767px) {
+        .menu-icon {
+            display: flex;
+        }
 
-    .menu-bg.active {
-        display: block;
+        nav ul {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background-color: #412929;
+            padding: 10px;
+            text-align: center;
+            z-index: 1;
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        nav ul.active {
+            transform: translateY(0);
+            opacity: 1;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 10px 0;
+        }
+
+        .menu-bg.active {
+            display: block;
+        }
     }
 }
