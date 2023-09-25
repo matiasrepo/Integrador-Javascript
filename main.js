@@ -14,37 +14,30 @@ const errorMessage = document.getElementById("error-message");
 const loginFormElement = document.querySelector("#login-form form");
 const favoritosIcon = document.getElementById("btn-favoritos");
 
+document.addEventListener("DOMContentLoaded", function () {
+	const menuIcon = document.querySelector(".menu-icon");
+	const navMenu = document.querySelector("nav ul");
+	const menuBg = document.querySelector(".menu-bg");
 
-
-document.addEventListener('DOMContentLoaded', function () {
-    const menuIcon = document.querySelector('.menu-icon');
-    const navMenu = document.querySelector('nav ul');
-    const menuBg = document.querySelector('.menu-bg');
-
-    // Agrega un evento de clic al botón de menú hamburguesa
-    menuIcon.addEventListener('click', function () {
-        // Toggle la clase 'active' en el menú de navegación para mostrar/ocultar el menú
-        navMenu.classList.toggle('active');
-        // Toggle la clase 'active' en el fondo borroso para mostrar/ocultar el fondo
-        menuBg.classList.toggle('active');
-      
-    });
+	// Agrega un evento de clic al botón de menú hamburguesa
+	menuIcon.addEventListener("click", function () {
+		// Toggle la clase 'active' en el menú de navegación para mostrar/ocultar el menú
+		navMenu.classList.toggle("active");
+		// Toggle la clase 'active' en el fondo borroso para mostrar/ocultar el fondo
+		menuBg.classList.toggle("active");
+	});
 });
 
 favoritosIcon.addEventListener("click", function () {
-    if (modalFavoritos.style.display === "block") {
-        modalFavoritos.style.display = "none";
-        modalBg.style.display = "none";
-    } else {
-        modalFavoritos.style.display = "block";
-        modalBg.style.display = "block";
-        mostrarFavoritos();
-    }
+	if (modalFavoritos.style.display === "block") {
+		modalFavoritos.style.display = "none";
+		modalBg.style.display = "none";
+	} else {
+		modalFavoritos.style.display = "block";
+		modalBg.style.display = "block";
+		mostrarFavoritos();
+	}
 });
-
-
-
-
 
 function openModal() {
 	modalFavoritos.style.display = "block";
@@ -98,8 +91,6 @@ modalBg.addEventListener("click", function (event) {
 		closeFavoritos();
 	}
 });
-
-
 
 function toggleFavorito(elemento, elementoCard) {
 	const addButton = elementoCard.querySelector(".btn-favorito");
@@ -212,7 +203,6 @@ window.addEventListener("DOMContentLoaded", () => {
 	cargarComics();
 });
 
-
 // Función para cargar los superhéroes específicos
 function cargarSuperheroes() {
 	// IDs de los superhéroes específicos
@@ -316,8 +306,8 @@ function mostrarSuperheroes(superheroes) {
 function mostrarComics(comics) {
 	const comicsContainer = document.querySelector(".comics-container");
 	comics.forEach((comic) => {
-        const comicCard = document.createElement("div");
-        comicCard.classList.add("comic-card");
+		const comicCard = document.createElement("div");
+		comicCard.classList.add("comic-card");
 
 		const title = document.createElement("h2");
 		title.textContent = comic.title;
@@ -351,7 +341,7 @@ function mostrarComics(comics) {
 		});
 		comicCard.appendChild(removeButton);
 
-		comicsContainer.appendChild(comicCard); 
+		comicsContainer.appendChild(comicCard);
 	});
 }
 
@@ -369,17 +359,13 @@ document.getElementById("modal-bg").addEventListener("click", function (event) {
 	}
 });
 
-
 // Función para guardar los favoritos en localStorage
 function guardarFavoritos(favoritos) {
-    localStorage.setItem("favoritos", JSON.stringify([...favoritos]));
+	localStorage.setItem("favoritos", JSON.stringify([...favoritos]));
 }
 
 // Función para cargar los favoritos desde localStorage
 function cargarFavoritos() {
-    const favoritosGuardados = JSON.parse(localStorage.getItem("favoritos"));
-    return new Set(favoritosGuardados || []);
+	const favoritosGuardados = JSON.parse(localStorage.getItem("favoritos"));
+	return new Set(favoritosGuardados || []);
 }
-
-
-
