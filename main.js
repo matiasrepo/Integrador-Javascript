@@ -1,186 +1,90 @@
-const apiKey = "7fabf80c7ad1f705d26be69991bb3d6f"; // Reemplaza con tu clave de API de Marvel
+const apiKey = "7fabf80c7ad1f705d26be69991bb3d6f";
 const apiUrl = "https://gateway.marvel.com/v1/public/";
 const favoritos = new Set();
 
-function cargarSuperheroes() {
-	const superheroesEndpoint = `${apiUrl}characters?apikey=${apiKey}&limit=10`;
-	fetch(superheroesEndpoint)
-		.then((response) => response.json())
-		.then((data) => {
-			if (data.data && data.data.results) {
-				mostrarSuperheroes(data.data.results);
-			}
-		})
-		.catch((error) => {
-			console.error("Error al cargar superhéroes:", error);
-		});
+// Elementos del DOM
+const btnFavoritos = document.getElementById("btn-favoritos");
+const modalFavoritos = document.getElementById("modal-favoritos");
+const modalBg = document.getElementById("modal-bg");
+const btnCloseModal = document.getElementById("btn-close-modal");
+
+const loginButton = document.getElementById("btn-login");
+const loginForm = document.getElementById("login-form");
+const closeButton = document.getElementById("btn-close-login");
+const errorMessage = document.getElementById("error-message");
+const loginFormElement = document.querySelector("#login-form form");
+
+function openModal() {
+    modalFavoritos.style.display = "block";
+    modalBg.style.display = "block";
+    mostrarFavoritos();
 }
 
-function cargarComics() {
-	const comicsEndpoint = `${apiUrl}comics?apikey=${apiKey}&limit=10`;
-	fetch(comicsEndpoint)
-		.then((response) => response.json())
-		.then((data) => {
-			if (data.data && data.data.results) {
-				mostrarComics(data.data.results);
-			}
-		})
-		.catch((error) => {
-			console.error("Error al cargar cómics:", error);
-		});
+function closeModal() {
+    modalFavoritos.style.display = "none";
+    modalBg.style.display = "none";
 }
-
-function mostrarSuperheroes(superheroes) {
-	const superheroesContainer = document.querySelector(".superheroes-container");
-	superheroes.forEach((superheroe) => {
-		const superheroeCard = document.createElement("div");
-		superheroeCard.classList.add("superhero-card");
-
-		const name = document.createElement("h2");
-		name.textContent = superheroe.name;
-
-		if (
-			superheroe.thumbnail &&
-			superheroe.thumbnail.path &&
-			superheroe.thumbnail.extension
-		) {
-			const imageUrl = `${superheroe.thumbnail.path}.${superheroe.thumbnail.extension}`;
-			const image = document.createElement("img");
-			image.src = imageUrl;
-			superheroeCard.appendChild(image);
-		}
-
-		superheroeCard.appendChild(name);
-
-		const description = document.createElement("p");
-		description.textContent =
-			superheroe.description || "Sin descripción disponible";
-		superheroeCard.appendChild(description);
-
-		const addButton = document.createElement("button");
-		addButton.textContent = "Agregar a Favoritos";
-		addButton.classList.add("btn-favorito");
-		addButton.style.display = "block"; // Mostrar el botón "Agregar a Favoritos" por defecto
-		addButton.addEventListener("click", () => {
-			toggleFavorito(superheroe, superheroeCard);
-		});
-		superheroeCard.appendChild(addButton);
-
-		const removeButton = document.createElement("button");
-		removeButton.textContent = "Eliminar de Favoritos";
-		removeButton.classList.add("btn-remove-favorito");
-		removeButton.style.display = "none"; // Ocultar el botón "Eliminar de Favoritos" inicialmente
-		removeButton.addEventListener("click", () => {
-			toggleFavorito(superheroe, superheroeCard);
-		});
-		superheroeCard.appendChild(removeButton);
-
-		superheroesContainer.appendChild(superheroeCard);
-	});
-}
-
-function mostrarComics(comics) {
-	const comicsContainer = document.querySelector(".comics-container");
-	comics.forEach((comic) => {
-		const comicCard = document.createElement("div");
-		comicCard.classList.add("comic-card");
-
-		const title = document.createElement("h2");
-		title.textContent = comic.title;
-
-		if (comic.thumbnail && comic.thumbnail.path && comic.thumbnail.extension) {
-			const imageUrl = `${comic.thumbnail.path}.${comic.thumbnail.extension}`;
-			const image = document.createElement("img");
-			image.src = imageUrl;
-			comicCard.appendChild(image);
-		}
-
-		comicCard.appendChild(title);
-
-		const addButton = document.createElement("button");
-		addButton.textContent = "Agregar a Favoritos";
-		addButton.classList.add("btn-favorito");
-        addButton.style.display = 'block';
-		addButton.addEventListener("click", () => {
-			toggleFavorito(comic, comicCard);
-		});
-		comicCard.appendChild(addButton);
-
-		comicsContainer.appendChild(comicCard);
-
-        const removeButton = document.createElement('button');
-        removeButton.textContent = 'Eliminar de Favoritos';
-        removeButton.classList.add('btn-remove-favorito');
-        removeButton.style.display = 'none'; // Ocultar el botón "Eliminar de Favoritos" inicialmente
-        removeButton.addEventListener('click', () => {
-            toggleFavorito(comic, comicCard);
-        });
-        comicCard.appendChild(removeButton);
-
-        comicsContainer.appendChild(comicCard);
-	});
-    
-}
-
-
-
 
 function mostrarFavoritos() {
-    const favoritosContainer = document.querySelector(".favoritos-container");
-    favoritosContainer.innerHTML = "";
+    const favoritosLista = document.querySelector(".favoritos-lista");
+    favoritosLista.innerHTML = "";
 
-    let tarjetasLimitadas = 0;
-    favoritos.forEach((superheroe) => {
-        if (tarjetasLimitadas < 3) {
-            const superheroeCard = document.createElement("div");
-            superheroeCard.classList.add("superhero-card", "favorito");
+    if (favoritos.size === 0) {
+        mostrarNotificacion("Sin favoritos agregados!");
+    } else {
+        favoritos.forEach((superheroe) => {
+            const listItem = document.createElement("li");
+            listItem.classList.add("favorito");
 
-            const name = document.createElement("h2");
+            const image = document.createElement("img");
+            image.src = superheroe.thumbnail.path + "." + superheroe.thumbnail.extension;
+
+            const name = document.createElement("span");
             name.textContent = superheroe.name;
-
-            if (
-                superheroe.thumbnail &&
-                superheroe.thumbnail.path &&
-                superheroe.thumbnail.extension
-            ) {
-                const imageUrl = `${superheroe.thumbnail.path}.${superheroe.thumbnail.extension}`;
-                const image = document.createElement("img");
-                image.src = imageUrl;
-                superheroeCard.appendChild(image);
-            }
-
-            superheroeCard.appendChild(name);
 
             const removeButton = document.createElement("button");
             removeButton.textContent = "Quitar de Favoritos";
             removeButton.classList.add("btn-remove-favorito");
             removeButton.addEventListener("click", () => {
-                toggleFavorito(superheroe, superheroeCard);
+                toggleFavorito(superheroe, listItem);
             });
-            superheroeCard.appendChild(removeButton);
 
-            favoritosContainer.appendChild(superheroeCard);
-            tarjetasLimitadas++;
-        }
-    });
+            listItem.appendChild(image);
+            listItem.appendChild(name);
+            listItem.appendChild(removeButton);
+
+            favoritosLista.appendChild(listItem);
+        });
+    }
 }
 
+function toggleFavorito(elemento, elementoCard) {
+    const addButton = elementoCard.querySelector(".btn-favorito");
+    const removeButton = elementoCard.querySelector(".btn-remove-favorito");
 
-let notificationTimeout; // Variable para controlar el tiempo de la notificación
+    if (favoritos.has(elemento)) {
+        favoritos.delete(elemento);
+        addButton.style.display = "block";
+        removeButton.style.display = "none";
+        mostrarNotificacion('Eliminado de favoritos', 'eliminado');
+
+    } else {
+        favoritos.add(elemento);
+        addButton.style.display = "none";
+        removeButton.style.display = "block";
+        mostrarNotificacion("Agregado a favoritos", 'agregado');
+    }
+}
 
 function mostrarNotificacion(mensaje, tipo) {
-    // Eliminar notificación anterior (si existe)
     const notificacionExistente = document.querySelector('.notificacion');
     if (notificacionExistente) {
         notificacionExistente.remove();
-        clearTimeout(notificationTimeout); // Limpiar el temporizador anterior
     }
 
     const notificacion = document.createElement('div');
     notificacion.classList.add('notificacion');
-    notificacion.style.backgroundColor = tipo === 'agregado' ? '#1a3814' : '#242425'; // Cambia el color de fondo según el tipo
-    notificacion.style.opacity = '0'; // Inicialmente, la notificación estará oculta
-    notificacion.style.transition = 'opacity 0.5s ease-in-out'; // Agrega una transición suave de opacidad
+    notificacion.style.backgroundColor = tipo === 'agregado' ? '#1a3814' : '#242425';
     notificacion.innerHTML = `
         <span class="icono">${tipo === 'agregado' ? '✅' : '❌'}</span>
         <span class="texto">${mensaje}</span>
@@ -188,60 +92,228 @@ function mostrarNotificacion(mensaje, tipo) {
 
     document.body.appendChild(notificacion);
 
-    // Mostrar la notificación después de un breve retraso para permitir la animación
     setTimeout(() => {
-        notificacion.style.opacity = '1';
-    }, 10);
-
-    // Ocultar la notificación después de 3 segundos
-    notificationTimeout = setTimeout(() => {
-        notificacion.style.opacity = '0';
-        setTimeout(() => {
-            notificacion.remove();
-        }, 500); // Espera 0.5 segundos antes de eliminar la notificación
+        notificacion.remove();
     }, 3000);
 }
 
+function openLoginForm() {
+    loginForm.style.display = "block";
+    errorMessage.textContent = "";
+}
 
-function toggleFavorito(elemento, elementoCard) {
-	const addButton = elementoCard.querySelector(".btn-favorito");
-	const removeButton = elementoCard.querySelector(".btn-remove-favorito");
+function closeLoginForm() {
+    loginForm.style.display = "none";
+    loginFormElement.reset();
+    errorMessage.textContent = "";
+}
 
-	if (favoritos.has(elemento)) {
-		favoritos.delete(elemento);
-		addButton.style.display = "block"; // Muestra el botón "Agregar a Favoritos"
-		removeButton.style.display = "none"; // Oculta el botón "Eliminar de Favoritos"
-		mostrarNotificacion('Eliminado de favoritos', 'eliminado'); // Especifica 'eliminado' como el segundo parámetro
+function verificarCredenciales(username, password) {
+    if (username === "usuario" && password === "contraseña") {
+        return true;
+    } else {
+        return false;
+    }
+}
 
-	} else {
-		favoritos.add(elemento);
-		addButton.style.display = "none"; // Oculta el botón "Agregar a Favoritos"
-		removeButton.style.display = "block"; // Muestra el botón "Eliminar de Favoritos"
-		mostrarNotificacion("Agregado a favoritos", 'agregado'); // Especifica 'agregado' como el segundo parámetro
-	}
+loginButton.addEventListener("click", openLoginForm);
+closeButton.addEventListener("click", closeLoginForm);
+
+loginFormElement.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    if (!username || !password) {
+        errorMessage.textContent = "Por favor, completa todos los campos.";
+    } else {
+        verificarCredenciales(username, password);
+    }
+});
+
+btnFavoritos.addEventListener("click", openModal);
+btnCloseModal.addEventListener("click", closeModal);
+
+window.addEventListener("DOMContentLoaded", () => {
+    cargarSuperheroes();
+    cargarComics();
+});
+
+document.getElementById('abrir-popup').addEventListener('click', function () {
+    const favoritosLista = document.querySelector('.favoritos-lista');
+
+    if (favoritosLista.children.length === 0) {
+        mostrarNotificacion("Sin favoritos agregados!");
+    } else {
+        openModal();
+    }
+});
+
+function cargarSuperheroes() {
+    const superheroesEndpoint = `${apiUrl}characters?apikey=${apiKey}&limit=10`;
+    fetch(superheroesEndpoint)
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.data && data.data.results) {
+                mostrarSuperheroes(data.data.results);
+            }
+        })
+        .catch((error) => {
+            console.error("Error al cargar superhéroes:", error);
+        });
+}
+
+function cargarComics() {
+    const comicsEndpoint = `${apiUrl}comics?apikey=${apiKey}&limit=10`;
+    fetch(comicsEndpoint)
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.data && data.data.results) {
+                mostrarComics(data.data.results);
+            }
+        })
+        .catch((error) => {
+            console.error("Error al cargar cómics:", error);
+        });
+}
+
+function mostrarSuperheroes(superheroes) {
+    const superheroesContainer = document.querySelector(".superheroes-container");
+    superheroes.forEach((superheroe) => {
+        const superheroeCard = document.createElement("div");
+        superheroeCard.classList.add("superhero-card");
+
+        const name = document.createElement("h2");
+        name.textContent = superheroe.name;
+
+        if (
+            superheroe.thumbnail &&
+            superheroe.thumbnail.path &&
+            superheroe.thumbnail.extension
+        ) {
+            const imageUrl = `${superheroe.thumbnail.path}.${superheroe.thumbnail.extension}`;
+            const image = document.createElement("img");
+            image.src = imageUrl;
+            superheroeCard.appendChild(image);
+        }
+
+        superheroeCard.appendChild(name);
+
+        const description = document.createElement("p");
+        description.textContent =
+            superheroe.description || "Sin descripción disponible";
+        superheroeCard.appendChild(description);
+
+        const addButton = document.createElement("button");
+        addButton.textContent = "Agregar a Favoritos";
+        addButton.classList.add("btn-favorito");
+        addButton.style.display = "block";
+        addButton.addEventListener("click", () => {
+            toggleFavorito(superheroe, superheroeCard);
+        });
+        superheroeCard.appendChild(addButton);
+
+        const removeButton = document.createElement("button");
+        removeButton.textContent = "Eliminar de Favoritos";
+        removeButton.classList.add("btn-remove-favorito");
+        removeButton.style.display = "none";
+        removeButton.addEventListener("click", () => {
+            toggleFavorito(superheroe, superheroeCard);
+        });
+        superheroeCard.appendChild(removeButton);
+
+        superheroesContainer.appendChild(superheroeCard);
+    });
+}
+
+function mostrarComics(comics) {
+    const comicsContainer = document.querySelector(".comics-container");
+    comics.forEach((comic) => {
+        const comicCard = document.createElement("div");
+        comicCard.classList.add("comic-card");
+
+        const title = document.createElement("h2");
+        title.textContent = comic.title;
+
+        if (comic.thumbnail && comic.thumbnail.path && comic.thumbnail.extension) {
+            const imageUrl = `${comic.thumbnail.path}.${comic.thumbnail.extension}`;
+            const image = document.createElement("img");
+            image.src = imageUrl;
+            comicCard.appendChild(image);
+        }
+
+        comicCard.appendChild(title);
+
+        const addButton = document.createElement("button");
+        addButton.textContent = "Agregar a Favoritos";
+        addButton.classList.add("btn-favorito");
+        addButton.style.display = 'block';
+        addButton.addEventListener("click", () => {
+            toggleFavorito(comic, comicCard);
+        });
+        comicCard.appendChild(addButton);
+
+        comicsContainer.appendChild(comicCard);
+
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Eliminar de Favoritos';
+        removeButton.classList.add('btn-remove-favorito');
+        removeButton.style.display = 'none';
+        removeButton.addEventListener('click', () => {
+            toggleFavorito(comic, comicCard);
+        });
+        comicCard.appendChild(removeButton);
+
+        comicsContainer.appendChild(comicCard);
+    });
 }
 
 
+// Función para abrir el formulario de inicio de sesión
+function openLoginForm() {
+    document.getElementById("login-form").style.display = "block";
+}
 
-const btnFavoritos = document.getElementById("btn-favoritos");
-btnFavoritos.addEventListener("click", () => {
-	const modalFavoritos = document.getElementById("modal-favoritos");
-	const modalBg = document.getElementById("modal-bg");
-	modalFavoritos.style.display = "block";
-	modalBg.style.display = "block";
-	mostrarFavoritos();
+// Función para cerrar el formulario de inicio de sesión
+function closeLoginForm() {
+    document.getElementById("login-form").style.display = "none";
+}
+
+// Función para abrir el pop-up de favoritos
+function openFavoritos() {
+    document.getElementById("modal-favoritos").style.display = "block";
+    document.getElementById("modal-bg").style.display = "block";
+}
+
+// Función para cerrar el pop-up de favoritos
+function closeFavoritos() {
+    document.getElementById("modal-favoritos").style.display = "none";
+    document.getElementById("modal-bg").style.display = "none";
+}
+
+// Agregar evento al botón "Iniciar sesión" para abrir el formulario
+document.getElementById("btn-login").addEventListener("click", openLoginForm);
+
+// Agregar evento al botón "Cerrar" del formulario para cerrarlo
+document.getElementById("btn-close-login").addEventListener("click", closeLoginForm);
+
+// Agregar evento al fondo oscuro del formulario para cerrarlo
+document.getElementById("login-form").addEventListener("click", function(event) {
+    if (event.target === document.getElementById("login-form")) {
+        closeLoginForm();
+    }
 });
 
-const btnCloseModal = document.getElementById("btn-close-modal");
-btnCloseModal.addEventListener("click", () => {
-	const modalFavoritos = document.getElementById("modal-favoritos");
-	const modalBg = document.getElementById("modal-bg");
-	modalFavoritos.style.display = "none";
-	modalBg.style.display = "none";
-});
+// Agregar evento al botón "Favoritos" para abrir el pop-up de favoritos
+document.getElementById("btn-favoritos").addEventListener("click", openFavoritos);
 
-// Cargar superhéroes y cómics al cargar la página
-window.addEventListener("DOMContentLoaded", () => {
-	cargarSuperheroes();
-	cargarComics();
+// Agregar evento al botón "Cerrar" del pop-up de favoritos para cerrarlo
+document.getElementById("btn-close-modal").addEventListener("click", closeFavoritos);
+
+// Agregar evento al fondo oscuro del pop-up de favoritos para cerrarlo
+document.getElementById("modal-bg").addEventListener("click", function(event) {
+    if (event.target === document.getElementById("modal-bg")) {
+        closeFavoritos();
+    }
 });
