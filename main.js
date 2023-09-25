@@ -14,36 +14,36 @@ const errorMessage = document.getElementById("error-message");
 const loginFormElement = document.querySelector("#login-form form");
 
 function openModal() {
-    modalFavoritos.style.display = "block";
-    modalBg.style.display = "block";
-    mostrarFavoritos();
+	modalFavoritos.style.display = "block";
+	modalBg.style.display = "block";
+	mostrarFavoritos();
 }
 
 function closeModal() {
-    modalFavoritos.style.display = "none";
-    modalBg.style.display = "none";
+	modalFavoritos.style.display = "none";
+	modalBg.style.display = "none";
 }
 
 function openLoginForm() {
-    loginForm.style.display = "block";
-    errorMessage.textContent = "";
+	loginForm.style.display = "block";
+	errorMessage.textContent = "";
 }
 
 function closeLoginForm() {
-    loginForm.style.display = "none";
-    loginFormElement.reset();
-    errorMessage.textContent = "";
+	loginForm.style.display = "none";
+	loginFormElement.reset();
+	errorMessage.textContent = "";
 }
 
 function openFavoritos() {
-    modalFavoritos.style.display = "block";
-    modalBg.style.display = "block";
-    mostrarFavoritos();
+	modalFavoritos.style.display = "block";
+	modalBg.style.display = "block";
+	mostrarFavoritos();
 }
 
 function closeFavoritos() {
-    modalFavoritos.style.display = "none";
-    modalBg.style.display = "none";
+	modalFavoritos.style.display = "none";
+	modalBg.style.display = "none";
 }
 
 document.getElementById("btn-login").addEventListener("click", openLoginForm);
@@ -51,94 +51,95 @@ document.getElementById("btn-login").addEventListener("click", openLoginForm);
 closeButton.addEventListener("click", closeLoginForm);
 
 loginForm.addEventListener("click", function (event) {
-    if (event.target === loginForm) {
-        closeLoginForm();
-    }
+	if (event.target === loginForm) {
+		closeLoginForm();
+	}
 });
 
 btnFavoritos.addEventListener("click", openFavoritos);
 
 btnCloseModal.addEventListener("click", closeFavoritos);
 
-modalBg.addEventListener("click", function(event) {
-    if (event.target === modalBg) {
-        closeFavoritos();
-    }
+modalBg.addEventListener("click", function (event) {
+	if (event.target === modalBg) {
+		closeFavoritos();
+	}
 });
 
 function mostrarFavoritos() {
-    const favoritosLista = document.querySelector(".favoritos-lista");
-    favoritosLista.innerHTML = "";
+	const favoritosLista = document.querySelector(".favoritos-lista");
+	favoritosLista.innerHTML = "";
 
-    if (favoritos.size === 0) {
-        mostrarNotificacion("Sin favoritos agregados!");
-    } else {
-        favoritos.forEach((superheroe) => {
-            const listItem = document.createElement("li");
-            listItem.classList.add("favorito");
+	if (favoritos.size === 0) {
+		mostrarNotificacion("Sin favoritos agregados!");
+	} else {
+		favoritos.forEach((superheroe) => {
+			const listItem = document.createElement("li");
+			listItem.classList.add("favorito");
 
-            const image = document.createElement("img");
-            image.src =
-                superheroe.thumbnail.path + "." + superheroe.thumbnail.extension;
+			const image = document.createElement("img");
+			image.src =
+				superheroe.thumbnail.path + "." + superheroe.thumbnail.extension;
 
-            const name = document.createElement("span");
-            name.textContent = superheroe.name;
+			const name = document.createElement("span");
+			name.textContent = superheroe.name;
 
-            const removeButton = document.createElement("button");
-            removeButton.textContent = "Quitar de Favoritos";
-            removeButton.classList.add("btn-remove-favorito");
-            removeButton.addEventListener("click", () => {
-                toggleFavorito(superheroe, listItem);
-            });
+			const removeButton = document.createElement("button");
+			removeButton.textContent = "Quitar de Favoritos";
+			removeButton.classList.add("btn-remove-favorito");
+			removeButton.addEventListener("click", () => {
+				toggleFavorito(superheroe, listItem);
+			});
 
-            listItem.appendChild(image);
-            listItem.appendChild(name);
-            listItem.appendChild(removeButton);
+			listItem.appendChild(image);
+			listItem.appendChild(name);
+			listItem.appendChild(removeButton);
 
-            favoritosLista.appendChild(listItem);
-        });
-    }
+			favoritosLista.appendChild(listItem);
+		});
+	}
 }
 
 function toggleFavorito(elemento, elementoCard) {
-    const addButton = elementoCard.querySelector(".btn-favorito");
-    const removeButton = elementoCard.querySelector(".btn-remove-favorito");
+	const addButton = elementoCard.querySelector(".btn-favorito");
+	const removeButton = elementoCard.querySelector(".btn-remove-favorito");
 
-    if (favoritos.has(elemento)) {
-        favoritos.delete(elemento);
-        addButton.style.display = "block";
-        removeButton.style.display = "none";
-        mostrarNotificacion("Eliminado de favoritos", "eliminado");
-    } else {
-        favoritos.add(elemento);
-        addButton.style.display = "none";
-        removeButton.style.display = "block";
-        mostrarNotificacion("Agregado a favoritos", "agregado");
-    }
+	if (favoritos.has(elemento)) {
+		favoritos.delete(elemento);
+		addButton.style.display = "block";
+		removeButton.style.display = "none";
+		mostrarNotificacion("Eliminado de favoritos", "eliminado");
+	} else {
+		favoritos.add(elemento);
+		addButton.style.display = "none";
+		removeButton.style.display = "block";
+		mostrarNotificacion("Agregado a favoritos", "agregado");
+	}
 }
 
 function mostrarNotificacion(mensaje, tipo) {
-    const notificacionExistente = document.querySelector('.notificacion');
-    if (notificacionExistente) {
-        notificacionExistente.remove();
-    }
+	const notificacionExistente = document.querySelector(".notificacion");
+	if (notificacionExistente) {
+		notificacionExistente.remove();
+	}
 
-    const notificacion = document.createElement('div');
-    notificacion.classList.add('notificacion');
-    notificacion.style.backgroundColor = tipo === 'agregado' ? '#1a3814' : '#242425';
-    notificacion.innerHTML = `
-        <span class="icono">${tipo === 'agregado' ? '✅' : '❌'}</span>
+	const notificacion = document.createElement("div");
+	notificacion.classList.add("notificacion");
+	notificacion.style.backgroundColor =
+		tipo === "agregado" ? "#1a3814" : "#242425";
+	notificacion.innerHTML = `
+        <span class="icono">${tipo === "agregado" ? "✅" : "❌"}</span>
         <span class="texto">${mensaje}</span>
     `;
 
-    document.body.appendChild(notificacion);
+	document.body.appendChild(notificacion);
 
-    setTimeout(() => {
-        notificacion.classList.add('mostrar');
-        setTimeout(() => {
-            notificacion.remove();
-        }, 3000);
-    }, 10);
+	setTimeout(() => {
+		notificacion.classList.add("mostrar");
+		setTimeout(() => {
+			notificacion.remove();
+		}, 3000);
+	}, 10);
 }
 
 function verificarCredenciales(username, password) {
@@ -183,22 +184,44 @@ document.getElementById("abrir-popup").addEventListener("click", function () {
 	}
 });
 
+// Función para cargar los superhéroes específicos
 function cargarSuperheroes() {
-	const superheroesEndpoint = `${apiUrl}characters?apikey=${apiKey}&limit=10`;
-	fetch(superheroesEndpoint)
-		.then((response) => response.json())
-		.then((data) => {
-			if (data.data && data.data.results) {
-				mostrarSuperheroes(data.data.results);
-			}
+	// IDs de los superhéroes específicos
+	const superheroesIDs = [
+		1016181, 1009610, 1009368, 1009664, 1010744, 1009165, 1009652, 1009220,
+		1009718, 1009351,
+	];
+
+	// Crear una promesa para cargar cada superhéroe por separado
+	const promesas = superheroesIDs.map((id) => {
+		const superheroEndpoint = `${apiUrl}characters/${id}?apikey=${apiKey}`;
+		return fetch(superheroEndpoint)
+			.then((response) => response.json())
+			.then((data) => data.data.results[0]);
+	});
+
+	// Esperar a que se resuelvan todas las promesas
+	Promise.all(promesas)
+		.then((superheroes) => {
+			// Llamar a la función para mostrar los superhéroes específicos
+			mostrarSuperheroes(superheroes);
 		})
 		.catch((error) => {
-			console.error("Error al cargar superhéroes:", error);
+			console.error("Error al cargar superhéroes específicos:", error);
 		});
 }
 
+// Llamar a la función para cargar los superhéroes específicos
+cargarSuperheroes();
+
+// Llamar a la función para cargar los superhéroes específicos
+cargarSuperheroes();
+
+// Función para cargar los cómics más populares
 function cargarComics() {
-	const comicsEndpoint = `${apiUrl}comics?apikey=${apiKey}&limit=10`;
+	// Endpoint para obtener los cómics más populares de Marvel
+	const comicsEndpoint = `${apiUrl}comics?apikey=${apiKey}&limit=10&orderBy=-focDate`;
+
 	fetch(comicsEndpoint)
 		.then((response) => response.json())
 		.then((data) => {
@@ -210,6 +233,9 @@ function cargarComics() {
 			console.error("Error al cargar cómics:", error);
 		});
 }
+
+// Llamar a la función para cargar los cómics populares
+cargarComics();
 
 function mostrarSuperheroes(superheroes) {
 	const superheroesContainer = document.querySelector(".superheroes-container");
@@ -302,12 +328,16 @@ function mostrarComics(comics) {
 	});
 }
 
-document.getElementById("btn-favoritos").addEventListener("click", openFavoritos);
+document
+	.getElementById("btn-favoritos")
+	.addEventListener("click", openFavoritos);
 
-document.getElementById("btn-close-modal").addEventListener("click", closeFavoritos);
+document
+	.getElementById("btn-close-modal")
+	.addEventListener("click", closeFavoritos);
 
-document.getElementById("modal-bg").addEventListener("click", function(event) {
-    if (event.target === document.getElementById("modal-bg")) {
-        closeFavoritos();
-    }
+document.getElementById("modal-bg").addEventListener("click", function (event) {
+	if (event.target === document.getElementById("modal-bg")) {
+		closeFavoritos();
+	}
 });
