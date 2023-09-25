@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Sen&display=swap');
 
-
-
 html {
     scroll-behavior: smooth;
 }
@@ -28,8 +26,67 @@ header {
 header h1 {
     font-size: 3rem;
     margin: 0;
-    flex-grow: 1;
     text-align: center;
+    flex-grow: 1;
+}
+
+
+footer {
+    background-color: #252525;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    margin-right: 20px;
+}
+/* Estilos para el fondo borroso del menú hamburguesa */
+.menu-bg {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Estilos para mostrar el menú hamburguesa */
+.menu-icon.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.menu-icon.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-icon.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.menu-bg.active {
+    display: block;
+}
+
+.bar {
+    background-color: #fff;
+    width: 100%;
+    height: 3px;
+    border-radius: 3px;
 }
 
 nav ul {
@@ -38,7 +95,8 @@ nav ul {
     display: flex;
     gap: 20px;
     justify-content: center;
-    align-items: center;/
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 nav li {
@@ -51,13 +109,11 @@ nav a {
     font-weight: bold;
     position: relative;
     transition: color 0.2s ease, transform 0.2s ease;
-    font-family: 'Montserrat', sans-serif;
 }
 
 nav a:hover {
     color: #000000;
     transform: scale(1.05);
-    font-family: 'Montserrat', sans-serif;
 }
 
 #login-form {
@@ -130,7 +186,7 @@ nav a:hover {
     transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-/* Estilo para el botón de "Iniciar sesión" en el menú */
+/* Estilos para el botón de "Iniciar sesión" en el menú */
 #btn-login {
     background-color: #a90000;
     color: #fff;
@@ -144,6 +200,18 @@ nav a:hover {
 
 #btn-login:hover {
     background-color: #d94444;
+}
+
+/* Estilos para el botón de favoritos en el menú */
+#btn-favoritos {
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+#btn-favoritos:hover {
+    color: #000000;
 }
 
 /* Estilos para el panel de favoritos */
@@ -319,23 +387,58 @@ nav a:hover {
     transform: scale(1.02);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
-
-/* Estilos para el separador banner */
 .separador-banner {
-    background-color: #a90000;
+    position: relative;
+    background-image: url('https://www.denofgeek.com/wp-content/uploads/2022/07/marvel-axe-judgment-day.jpg');
+    background-size: cover;
+    background-position: center;
     color: #fff;
     text-align: center;
-    padding: 20px 0;
+    padding: 100px 0;
+    font-family: 'Bebas Neue', sans-serif;
 }
 
+.separador-banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://www.denofgeek.com/wp-content/uploads/2022/07/marvel-axe-judgment-day.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(5px); /* Ajusta el valor para el nivel de desenfoque deseado */
+    z-index: -1;
+}
+
+
 .separador-banner h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+    font-size: 3rem; /* Aumenta el tamaño del título */
+    margin-bottom: 20px; /* Mayor espacio inferior */
 }
 
 .separador-banner p {
-    font-size: 1rem;
+    font-size: 1.2rem; /* Aumenta el tamaño del texto */
     margin: 0;
+    max-width: 600px; /* Establece un ancho máximo para que el texto no sea demasiado ancho en pantallas grandes */
+    margin: 0 auto; /* Centra el contenido horizontalmente */
+    line-height: 1.5; /* Espaciado entre líneas para una mejor legibilidad */
+}
+
+/* Estilos para pantallas de 768px a 1023px (Tablet) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .separador-banner {
+        padding: 80px 0; /* Ajusta el espacio en pantallas de tablet */
+    }
+}
+
+/* Estilos para pantallas de 767px o menos (Móvil) */
+@media (max-width: 767px) {
+    @media (max-width: 767px) {
+        .separador-banner {
+            padding: 60px 0; /* Ajusta el espacio en pantallas de móvil */
+        }
 }
 
 /* Estilos para la notificación */
@@ -372,40 +475,99 @@ nav a:hover {
     opacity: 1;
 }
 
-footer {
-    background-color: #252525;
-    color: #fff;
-    text-align: center;
-    padding: 1rem 0;
+/* Estilos para el menú hamburguesa */
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    margin-right: 20px;
+    position: relative;
 }
 
-/* Estilos para pantallas de 1024px en adelante */
-@media (min-width: 1024px) {
-    .main-container {
-        grid-template-columns: repeat(5, 1fr);
-    }
+.bar {
+    background-color: #fff;
+    width: 100%;
+    height: 3px;
+    border-radius: 3px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
+
+
+
 
 /* Estilos para pantallas de 768px a 1023px (Tablet) */
 @media (min-width: 768px) and (max-width: 1023px) {
-    .main-container {
-        grid-template-columns: repeat(3, 1fr);
+    .menu-icon {
+        display: flex;
     }
 
-    .comic-card {
-        max-width: calc(50% - 20px);
-        margin: 10px;
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #300b0b;
+        padding: 0;
+        text-align: center;
+        z-index: 1;
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    nav ul.active {
+        transform: translateY(0);
+        opacity: 1;
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .menu-bg.active {
+        display: block;
     }
 }
 
 /* Estilos para pantallas de 767px o menos (Móvil) */
 @media (max-width: 767px) {
-    .main-container {
-        grid-template-columns: 1fr;
+    .menu-icon {
+        display: flex;
     }
 
-    .comic-card {
-        max-width: 100%;
-        margin: 10px;
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #300b0b;
+        padding: 0;
+        text-align: center;
+        z-index: 1;
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    nav ul.active {
+        transform: translateY(0);
+        opacity: 1;
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .menu-bg.active {
+        display: block;
     }
 }

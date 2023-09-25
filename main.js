@@ -12,6 +12,22 @@ const loginForm = document.getElementById("login-form");
 const closeButton = document.getElementById("btn-close-login");
 const errorMessage = document.getElementById("error-message");
 const loginFormElement = document.querySelector("#login-form form");
+const favoritosIcon = document.getElementById("btn-favoritos");
+
+favoritosIcon.addEventListener("click", function () {
+    if (modalFavoritos.style.display === "block") {
+        modalFavoritos.style.display = "none";
+        modalBg.style.display = "none";
+    } else {
+        modalFavoritos.style.display = "block";
+        modalBg.style.display = "block";
+        mostrarFavoritos();
+    }
+});
+
+
+
+
 
 function openModal() {
 	modalFavoritos.style.display = "block";
@@ -66,6 +82,21 @@ modalBg.addEventListener("click", function (event) {
 	}
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    const menuIcon = document.querySelector('.menu-icon');
+    const navMenu = document.querySelector('nav ul');
+    const menuBg = document.querySelector('.menu-bg');
+
+    // Agrega un evento de clic al botón de menú hamburguesa
+    menuIcon.addEventListener('click', function () {
+        // Toggle la clase 'active' en el menú de navegación para mostrar/ocultar el menú
+        navMenu.classList.toggle('active');
+        // Toggle la clase 'active' en el fondo borroso para mostrar/ocultar el fondo
+        menuBg.classList.toggle('active');
+        // Toggle la clase 'active' en el botón de menú hamburguesa para cambiar su apariencia
+        menuIcon.classList.toggle('active');
+    });
+});
 
 
 function toggleFavorito(elemento, elementoCard) {
@@ -232,6 +263,7 @@ cargarComics();
 
 function mostrarSuperheroes(superheroes) {
 	const superheroesContainer = document.querySelector(".superheroes-container");
+	superheroesContainer.innerHTML = "";
 	superheroes.forEach((superheroe) => {
 		const superheroeCard = document.createElement("div");
 		superheroeCard.classList.add("superhero-card");
@@ -282,8 +314,8 @@ function mostrarSuperheroes(superheroes) {
 function mostrarComics(comics) {
 	const comicsContainer = document.querySelector(".comics-container");
 	comics.forEach((comic) => {
-		const comicCard = document.createElement("div");
-		comicCard.classList.add("comic-card");
+        const comicCard = document.createElement("div");
+        comicCard.classList.add("comic-card");
 
 		const title = document.createElement("h2");
 		title.textContent = comic.title;
@@ -317,7 +349,7 @@ function mostrarComics(comics) {
 		});
 		comicCard.appendChild(removeButton);
 
-		comicsContainer.appendChild(comicCard);
+		comicsContainer.appendChild(comicCard); 
 	});
 }
 
@@ -346,3 +378,6 @@ function cargarFavoritos() {
     const favoritosGuardados = JSON.parse(localStorage.getItem("favoritos"));
     return new Set(favoritosGuardados || []);
 }
+
+
+
