@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Sen&display=swap');
+
+
+
 html {
     scroll-behavior: smooth;
 }
@@ -12,31 +16,48 @@ body {
 }
 
 header {
-    background-color: #a90000;
+    background-color: #300b0b;
     color: #fff;
     padding: 1rem 0;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 header h1 {
     font-size: 3rem;
     margin: 0;
+    flex-grow: 1;
+    text-align: center;
 }
 
 nav ul {
     list-style: none;
     padding: 0;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;/
 }
 
 nav li {
     display: inline;
-    margin: 0 1rem;
 }
 
 nav a {
     text-decoration: none;
     color: #fff;
     font-weight: bold;
+    position: relative;
+    transition: color 0.2s ease, transform 0.2s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+nav a:hover {
+    color: #000000;
+    transform: scale(1.05);
+    font-family: 'Montserrat', sans-serif;
 }
 
 #login-form {
@@ -52,11 +73,11 @@ nav a {
 }
 
 #login-form .modal-content {
-    background-color: #fff;
-    margin: 15% auto;
+    background-color: #8f031a;
+    margin: 10% auto;
     padding: 20px;
-    border: 1px solid #888;
-    border-radius: 5px;
+    border: 1px solid #8f031a;
+    border-radius: 20px;
     max-width: 400px;
     /* Ajusta el ancho máximo del formulario */
 }
@@ -64,7 +85,7 @@ nav a {
 #login-form h2 {
     font-size: 1.5rem;
     text-align: center;
-    /* Centra el título */
+    color: #fafafa;
 }
 
 #login-form form {
@@ -88,13 +109,25 @@ nav a {
 }
 
 #login-form button[type="submit"] {
-    background-color: #a90000;
+    background-color: #fffcfc65;
     color: #fff;
     border: none;
     border-radius: 5px;
     padding: 10px;
     cursor: pointer;
     font-weight: bold;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+#login-form button:hover {
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: color 0.2s ease, background-color 0.2s ease;
 }
 
 /* Estilo para el botón de "Iniciar sesión" en el menú */
@@ -106,6 +139,7 @@ nav a {
     padding: 10px 20px;
     cursor: pointer;
     font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #btn-login:hover {
@@ -169,6 +203,7 @@ nav a {
     max-width: 150px;
     height: auto;
 }
+
 .main-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -284,6 +319,7 @@ nav a {
     transform: scale(1.02);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+
 /* Estilos para el separador banner */
 .separador-banner {
     background-color: #a90000;

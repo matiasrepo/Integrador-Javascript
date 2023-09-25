@@ -66,6 +66,27 @@ modalBg.addEventListener("click", function (event) {
 	}
 });
 
+
+
+function toggleFavorito(elemento, elementoCard) {
+	const addButton = elementoCard.querySelector(".btn-favorito");
+	const removeButton = elementoCard.querySelector(".btn-remove-favorito");
+
+	if (favoritos.has(elemento)) {
+		favoritos.delete(elemento);
+		addButton.style.display = "block";
+		removeButton.style.display = "none";
+		mostrarNotificacion("Eliminado de favoritos", "eliminado");
+	} else {
+		favoritos.add(elemento);
+		addButton.style.display = "none";
+		removeButton.style.display = "block";
+		mostrarNotificacion("Agregado a favoritos", "agregado");
+	}
+
+	// Guardar favoritos actualizados en localStorage
+	guardarFavoritos([...favoritos]);
+}
 function mostrarFavoritos() {
 	const favoritosLista = document.querySelector(".favoritos-lista");
 	favoritosLista.innerHTML = "";
@@ -98,23 +119,7 @@ function mostrarFavoritos() {
 			favoritosLista.appendChild(listItem);
 		});
 	}
-}
-
-function toggleFavorito(elemento, elementoCard) {
-	const addButton = elementoCard.querySelector(".btn-favorito");
-	const removeButton = elementoCard.querySelector(".btn-remove-favorito");
-
-	if (favoritos.has(elemento)) {
-		favoritos.delete(elemento);
-		addButton.style.display = "block";
-		removeButton.style.display = "none";
-		mostrarNotificacion("Eliminado de favoritos", "eliminado");
-	} else {
-		favoritos.add(elemento);
-		addButton.style.display = "none";
-		removeButton.style.display = "block";
-		mostrarNotificacion("Agregado a favoritos", "agregado");
-	}
+	guardarFavoritos([...favoritos]);
 }
 
 function mostrarNotificacion(mensaje, tipo) {
@@ -174,15 +179,6 @@ window.addEventListener("DOMContentLoaded", () => {
 	cargarComics();
 });
 
-document.getElementById("abrir-popup").addEventListener("click", function () {
-	const favoritosLista = document.querySelector(".favoritos-lista");
-
-	if (favoritosLista.children.length === 0) {
-		mostrarNotificacion("Sin favoritos agregados!");
-	} else {
-		openModal();
-	}
-});
 
 // Función para cargar los superhéroes específicos
 function cargarSuperheroes() {
@@ -210,9 +206,6 @@ function cargarSuperheroes() {
 			console.error("Error al cargar superhéroes específicos:", error);
 		});
 }
-
-// Llamar a la función para cargar los superhéroes específicos
-cargarSuperheroes();
 
 // Llamar a la función para cargar los superhéroes específicos
 cargarSuperheroes();
@@ -341,3 +334,15 @@ document.getElementById("modal-bg").addEventListener("click", function (event) {
 		closeFavoritos();
 	}
 });
+
+
+// Función para guardar los favoritos en localStorage
+function guardarFavoritos(favoritos) {
+    localStorage.setItem("favoritos", JSON.stringify([...favoritos]));
+}
+
+// Función para cargar los favoritos desde localStorage
+function cargarFavoritos() {
+    const favoritosGuardados = JSON.parse(localStorage.getItem("favoritos"));
+    return new Set(favoritosGuardados || []);
+}
