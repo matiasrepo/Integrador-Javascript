@@ -225,6 +225,7 @@ nav a {
     padding: 20px;
     border-radius: 5px;
     text-align: center;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .superhero-card h2 {
@@ -242,27 +243,63 @@ nav a {
     height: auto;
 }
 
+/* Estilos para las tarjetas de cómics */
 .comic-card {
-    background-color: #fff;
+    background-color: #eee;
     border: 1px solid #d9d9d9;
     padding: 20px;
     border-radius: 5px;
     text-align: center;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .comic-card h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
     color: #a90000;
+}
+
+.comic-card img {
+    max-width: 100%;
+    height: auto;
 }
 
 .comic-card p {
     font-size: 1rem;
 }
 
-.comic-card img {
-    max-width: 100%;
-    height: auto;
+/* Estilo para el párrafo de descripción en la sección de cómics */
+.comics-container p {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Efecto hover para las tarjetas de cómics y superhéroes */
+.superhero-card:hover,
+.comic-card:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.02);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+/* Estilos para el separador banner */
+.separador-banner {
+    background-color: #a90000;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.separador-banner h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.separador-banner p {
+    font-size: 1rem;
+    margin: 0;
 }
 
 /* Estilos para la notificación */
@@ -310,11 +347,6 @@ footer {
 @media (min-width: 1024px) {
     .main-container {
         grid-template-columns: repeat(5, 1fr);
-    }
-
-    .comic-card {
-        max-width: calc(50% - 20px);
-        margin: 10px;
     }
 }
 
